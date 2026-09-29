@@ -1,0 +1,9 @@
+strategy,stations,frames_per_station,attempts,successes,collisions,jams,efficiency,wall_time_s
+non_persistent,2,5,15,13,2,0,0.1198,0.56
+non_persistent,4,5,62,50,12,0,0.1517,2.03
+one_persistent,2,5,22,19,3,0,0.2127,0.45
+one_persistent,4,5,63,46,17,0,0.0606,2.49
+p_persistent,2,5,10,10,0,0,0.1510,0.32
+p_persistent,4,5,71,66,5,0,0.0116,37.76
+csma_cd,2,5,14,10,2,4,0.1625,0.32
+csma_cd,4,5,54,20,18,34,0.2647,0.51
