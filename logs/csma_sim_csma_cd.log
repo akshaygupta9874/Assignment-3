@@ -1,0 +1,364 @@
+
+==========================================================================
+    CONCURRENT MULTI-THREADED CSMA & CSMA/CD SIMULATOR (POSIX pthreads)  
+==========================================================================
+Contending Station Threads  : 10
+MAC Protocol Strategy       : CSMA/CD (IEEE 802.3)
+Frames per Station          : 5
+Slot Time (2 * Tau)         : 4.00 ms
+Frame Transmission Time     : 8.00 ms (64 Bytes)
+Jamming Signal Pattern      : 32-bit (0x55555555)
+Synchronization Primitives  : POSIX pthread_mutex_t & pthread_cond_t
+Detailed Execution Log File : logs/csma_simulation.log
+==========================================================================
+
+[20:40:14.449] [INFO] [Station 05] Transmitting frame #1 (attempt 1)
+[20:40:14.450] [COLL] [Station 06] Collision voltage spike: 2.0V on wire!
+[20:40:14.450] [COLL] [Station 10] Collision voltage spike: 3.0V on wire!
+[20:40:14.451] [JAM ] [Station 06] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 1)
+[20:40:14.451] [COLL] [Station 06] Collision voltage spike: 2.0V on wire!
+[20:40:14.451] [JAM ] [Station 05] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 1)
+[20:40:14.451] [COLL] [Station 05] Collision voltage spike: 3.0V on wire!
+[20:40:14.451] [COLL] [Station 07] Collision voltage spike: 4.0V on wire!
+[20:40:14.451] [JAM ] [Station 10] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 1)
+[20:40:14.452] [JAM ] [Station 06] Aborted -> 32-bit JAM (0x55555555), BEB backoff 12.00 ms (try 2)
+[20:40:14.452] [JAM ] [Station 05] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 2)
+[20:40:14.453] [JAM ] [Station 07] Aborted -> 32-bit JAM (0x55555555), BEB backoff 4.00 ms (try 1)
+[20:40:14.453] [INFO] [Station 05] Transmitting frame #1 (attempt 3)
+[20:40:14.453] [COLL] [Station 10] Collision voltage spike: 2.0V on wire!
+[20:40:14.453] [COLL] [Station 04] Collision voltage spike: 3.0V on wire!
+[20:40:14.453] [COLL] [Station 01] Collision voltage spike: 4.0V on wire!
+[20:40:14.453] [COLL] [Station 03] Collision voltage spike: 5.0V on wire!
+[20:40:14.454] [COLL] [Station 02] Collision voltage spike: 6.0V on wire!
+[20:40:14.454] [JAM ] [Station 10] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 2)
+[20:40:14.454] [COLL] [Station 10] Collision voltage spike: 6.0V on wire!
+[20:40:14.454] [JAM ] [Station 05] Aborted -> 32-bit JAM (0x55555555), BEB backoff 28.00 ms (try 3)
+[20:40:14.454] [JAM ] [Station 04] Aborted -> 32-bit JAM (0x55555555), BEB backoff 4.00 ms (try 1)
+[20:40:14.454] [COLL] [Station 08] Collision voltage spike: 5.0V on wire!
+[20:40:14.454] [COLL] [Station 09] Collision voltage spike: 6.0V on wire!
+[20:40:14.455] [JAM ] [Station 01] Aborted -> 32-bit JAM (0x55555555), BEB backoff 4.00 ms (try 1)
+[20:40:14.455] [JAM ] [Station 03] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 1)
+[20:40:14.455] [JAM ] [Station 02] Aborted -> 32-bit JAM (0x55555555), BEB backoff 4.00 ms (try 1)
+[20:40:14.455] [JAM ] [Station 10] Aborted -> 32-bit JAM (0x55555555), BEB backoff 20.00 ms (try 3)
+[20:40:14.456] [JAM ] [Station 08] Aborted -> 32-bit JAM (0x55555555), BEB backoff 4.00 ms (try 1)
+[20:40:14.456] [JAM ] [Station 09] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 1)
+[20:40:14.456] [INFO] [Station 03] Transmitting frame #1 (attempt 2)
+[20:40:14.456] [COLL] [Station 09] Collision voltage spike: 2.0V on wire!
+[20:40:14.457] [COLL] [Station 07] Collision voltage spike: 3.0V on wire!
+[20:40:14.457] [JAM ] [Station 09] Aborted -> 32-bit JAM (0x55555555), BEB backoff 4.00 ms (try 2)
+[20:40:14.457] [JAM ] [Station 03] Aborted -> 32-bit JAM (0x55555555), BEB backoff 12.00 ms (try 2)
+[20:40:14.458] [JAM ] [Station 07] Aborted -> 32-bit JAM (0x55555555), BEB backoff 12.00 ms (try 2)
+[20:40:14.458] [INFO] [Station 04] Transmitting frame #1 (attempt 2)
+[20:40:14.459] [COLL] [Station 01] Collision voltage spike: 2.0V on wire!
+[20:40:14.459] [COLL] [Station 02] Collision voltage spike: 3.0V on wire!
+[20:40:14.460] [COLL] [Station 08] Collision voltage spike: 4.0V on wire!
+[20:40:14.460] [JAM ] [Station 01] Aborted -> 32-bit JAM (0x55555555), BEB backoff 8.00 ms (try 2)
+[20:40:14.460] [JAM ] [Station 04] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 2)
+[20:40:14.460] [JAM ] [Station 02] Aborted -> 32-bit JAM (0x55555555), BEB backoff 12.00 ms (try 2)
+[20:40:14.460] [COLL] [Station 04] Collision voltage spike: 2.0V on wire!
+[20:40:14.461] [JAM ] [Station 08] Aborted -> 32-bit JAM (0x55555555), BEB backoff 8.00 ms (try 2)
+[20:40:14.462] [JAM ] [Station 04] Aborted -> 32-bit JAM (0x55555555), BEB backoff 8.00 ms (try 3)
+[20:40:14.462] [INFO] [Station 09] Transmitting frame #1 (attempt 3)
+[20:40:14.470] [SUCC] [Station 09] Frame #1 delivered successfully! (latency: 15.69 ms, throughput: 32.64 kbps)
+[20:40:14.470] [INFO] [Station 04] Transmitting frame #1 (attempt 4)
+[20:40:14.470] [COLL] [Station 03] Collision voltage spike: 2.0V on wire!
+[20:40:14.470] [COLL] [Station 06] Collision voltage spike: 3.0V on wire!
+[20:40:14.471] [COLL] [Station 08] Collision voltage spike: 4.0V on wire!
+[20:40:14.471] [COLL] [Station 01] Collision voltage spike: 5.0V on wire!
+[20:40:14.471] [COLL] [Station 07] Collision voltage spike: 6.0V on wire!
+[20:40:14.472] [JAM ] [Station 03] Aborted -> 32-bit JAM (0x55555555), BEB backoff 24.00 ms (try 3)
+[20:40:14.472] [JAM ] [Station 06] Aborted -> 32-bit JAM (0x55555555), BEB backoff 20.00 ms (try 3)
+[20:40:14.472] [JAM ] [Station 08] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 3)
+[20:40:14.472] [COLL] [Station 08] Collision voltage spike: 4.0V on wire!
+[20:40:14.472] [JAM ] [Station 01] Aborted -> 32-bit JAM (0x55555555), BEB backoff 24.00 ms (try 3)
+[20:40:14.472] [JAM ] [Station 07] Aborted -> 32-bit JAM (0x55555555), BEB backoff 4.00 ms (try 3)
+[20:40:14.472] [JAM ] [Station 04] Aborted -> 32-bit JAM (0x55555555), BEB backoff 28.00 ms (try 4)
+[20:40:14.473] [JAM ] [Station 08] Aborted -> 32-bit JAM (0x55555555), BEB backoff 52.00 ms (try 4)
+[20:40:14.473] [INFO] [Station 02] Transmitting frame #1 (attempt 3)
+[20:40:14.473] [COLL] [Station 09] Collision voltage spike: 2.0V on wire!
+[20:40:14.475] [JAM ] [Station 09] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 1)
+[20:40:14.475] [INFO] [Station 09] Transmitting frame #2 (attempt 2)
+[20:40:14.475] [JAM ] [Station 02] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 3)
+[20:40:14.475] [COLL] [Station 02] Collision voltage spike: 2.0V on wire!
+[20:40:14.476] [COLL] [Station 10] Collision voltage spike: 3.0V on wire!
+[20:40:14.476] [JAM ] [Station 02] Aborted -> 32-bit JAM (0x55555555), BEB backoff 56.00 ms (try 4)
+[20:40:14.476] [JAM ] [Station 09] Aborted -> 32-bit JAM (0x55555555), BEB backoff 8.00 ms (try 2)
+[20:40:14.476] [COLL] [Station 07] Collision voltage spike: 2.0V on wire!
+[20:40:14.477] [JAM ] [Station 10] Aborted -> 32-bit JAM (0x55555555), BEB backoff 20.00 ms (try 4)
+[20:40:14.478] [JAM ] [Station 07] Aborted -> 32-bit JAM (0x55555555), BEB backoff 16.00 ms (try 4)
+[20:40:14.482] [INFO] [Station 05] Transmitting frame #1 (attempt 4)
+[20:40:14.484] [COLL] [Station 09] Collision voltage spike: 2.0V on wire!
+[20:40:14.486] [JAM ] [Station 09] Aborted -> 32-bit JAM (0x55555555), BEB backoff 24.00 ms (try 3)
+[20:40:14.486] [JAM ] [Station 05] Aborted -> 32-bit JAM (0x55555555), BEB backoff 52.00 ms (try 4)
+[20:40:14.492] [INFO] [Station 06] Transmitting frame #1 (attempt 4)
+[20:40:14.494] [COLL] [Station 07] Collision voltage spike: 2.0V on wire!
+[20:40:14.495] [JAM ] [Station 07] Aborted -> 32-bit JAM (0x55555555), BEB backoff 100.00 ms (try 5)
+[20:40:14.495] [JAM ] [Station 06] Aborted -> 32-bit JAM (0x55555555), BEB backoff 12.00 ms (try 4)
+[20:40:14.496] [INFO] [Station 03] Transmitting frame #1 (attempt 4)
+[20:40:14.496] [COLL] [Station 01] Collision voltage spike: 2.0V on wire!
+[20:40:14.497] [COLL] [Station 10] Collision voltage spike: 3.0V on wire!
+[20:40:14.498] [JAM ] [Station 03] Aborted -> 32-bit JAM (0x55555555), BEB backoff 44.00 ms (try 4)
+[20:40:14.498] [JAM ] [Station 01] Aborted -> 32-bit JAM (0x55555555), BEB backoff 52.00 ms (try 4)
+[20:40:14.498] [JAM ] [Station 10] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 5)
+[20:40:14.498] [INFO] [Station 10] Transmitting frame #1 (attempt 6)
+[20:40:14.506] [SUCC] [Station 10] Frame #1 delivered successfully! (latency: 56.43 ms, throughput: 9.07 kbps)
+[20:40:14.506] [INFO] [Station 04] Transmitting frame #1 (attempt 5)
+[20:40:14.508] [COLL] [Station 06] Collision voltage spike: 2.0V on wire!
+[20:40:14.509] [JAM ] [Station 06] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 5)
+[20:40:14.509] [JAM ] [Station 04] Aborted -> 32-bit JAM (0x55555555), BEB backoff 120.00 ms (try 5)
+[20:40:14.509] [INFO] [Station 06] Transmitting frame #1 (attempt 6)
+[20:40:14.510] [COLL] [Station 09] Collision voltage spike: 2.0V on wire!
+[20:40:14.511] [COLL] [Station 10] Collision voltage spike: 3.0V on wire!
+[20:40:14.511] [JAM ] [Station 09] Aborted -> 32-bit JAM (0x55555555), BEB backoff 44.00 ms (try 4)
+[20:40:14.511] [JAM ] [Station 06] Aborted -> 32-bit JAM (0x55555555), BEB backoff 164.00 ms (try 6)
+[20:40:14.512] [JAM ] [Station 10] Aborted -> 32-bit JAM (0x55555555), BEB backoff 4.00 ms (try 1)
+[20:40:14.516] [INFO] [Station 10] Transmitting frame #2 (attempt 2)
+[20:40:14.524] [SUCC] [Station 10] Frame #2 delivered successfully! (latency: 13.86 ms, throughput: 36.93 kbps)
+[20:40:14.525] [INFO] [Station 08] Transmitting frame #1 (attempt 5)
+[20:40:14.527] [COLL] [Station 10] Collision voltage spike: 2.0V on wire!
+[20:40:14.528] [JAM ] [Station 10] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 1)
+[20:40:14.528] [INFO] [Station 10] Transmitting frame #3 (attempt 2)
+[20:40:14.528] [JAM ] [Station 08] Aborted -> 32-bit JAM (0x55555555), BEB backoff 28.00 ms (try 5)
+[20:40:14.536] [SUCC] [Station 10] Frame #3 delivered successfully! (latency: 9.61 ms, throughput: 53.29 kbps)
+[20:40:14.536] [INFO] [Station 02] Transmitting frame #1 (attempt 5)
+[20:40:14.538] [COLL] [Station 05] Collision voltage spike: 2.0V on wire!
+[20:40:14.539] [JAM ] [Station 02] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 5)
+[20:40:14.539] [JAM ] [Station 05] Aborted -> 32-bit JAM (0x55555555), BEB backoff 72.00 ms (try 5)
+[20:40:14.539] [INFO] [Station 10] Transmitting frame #4 (attempt 1)
+[20:40:14.540] [COLL] [Station 02] Collision voltage spike: 2.0V on wire!
+[20:40:14.541] [JAM ] [Station 02] Aborted -> 32-bit JAM (0x55555555), BEB backoff 156.00 ms (try 6)
+[20:40:14.541] [JAM ] [Station 10] Aborted -> 32-bit JAM (0x55555555), BEB backoff 4.00 ms (try 1)
+[20:40:14.542] [INFO] [Station 03] Transmitting frame #1 (attempt 5)
+[20:40:14.550] [SUCC] [Station 03] Frame #1 delivered successfully! (latency: 96.81 ms, throughput: 5.29 kbps)
+[20:40:14.550] [INFO] [Station 10] Transmitting frame #4 (attempt 2)
+[20:40:14.551] [COLL] [Station 01] Collision voltage spike: 2.0V on wire!
+[20:40:14.552] [JAM ] [Station 01] Aborted -> 32-bit JAM (0x55555555), BEB backoff 96.00 ms (try 5)
+[20:40:14.552] [JAM ] [Station 10] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 2)
+[20:40:14.552] [INFO] [Station 10] Transmitting frame #4 (attempt 3)
+[20:40:14.552] [COLL] [Station 03] Collision voltage spike: 2.0V on wire!
+[20:40:14.553] [JAM ] [Station 03] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 1)
+[20:40:14.553] [COLL] [Station 03] Collision voltage spike: 2.0V on wire!
+[20:40:14.553] [JAM ] [Station 10] Aborted -> 32-bit JAM (0x55555555), BEB backoff 20.00 ms (try 3)
+[20:40:14.554] [JAM ] [Station 03] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 2)
+[20:40:14.555] [INFO] [Station 03] Transmitting frame #2 (attempt 3)
+[20:40:14.556] [COLL] [Station 09] Collision voltage spike: 2.0V on wire!
+[20:40:14.557] [JAM ] [Station 09] Aborted -> 32-bit JAM (0x55555555), BEB backoff 24.00 ms (try 5)
+[20:40:14.557] [INFO] [Station 08] Transmitting frame #1 (attempt 6)
+[20:40:14.557] [JAM ] [Station 03] Aborted -> 32-bit JAM (0x55555555), BEB backoff 4.00 ms (try 3)
+[20:40:14.565] [SUCC] [Station 08] Frame #1 delivered successfully! (latency: 110.87 ms, throughput: 4.62 kbps)
+[20:40:14.565] [INFO] [Station 03] Transmitting frame #2 (attempt 4)
+[20:40:14.567] [COLL] [Station 08] Collision voltage spike: 2.0V on wire!
+[20:40:14.568] [JAM ] [Station 08] Aborted -> 32-bit JAM (0x55555555), BEB backoff 4.00 ms (try 1)
+[20:40:14.568] [JAM ] [Station 03] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 4)
+[20:40:14.568] [INFO] [Station 03] Transmitting frame #2 (attempt 5)
+[20:40:14.577] [SUCC] [Station 03] Frame #2 delivered successfully! (latency: 24.56 ms, throughput: 20.85 kbps)
+[20:40:14.577] [INFO] [Station 08] Transmitting frame #2 (attempt 2)
+[20:40:14.577] [COLL] [Station 10] Collision voltage spike: 2.0V on wire!
+[20:40:14.578] [JAM ] [Station 10] Aborted -> 32-bit JAM (0x55555555), BEB backoff 56.00 ms (try 4)
+[20:40:14.578] [JAM ] [Station 08] Aborted -> 32-bit JAM (0x55555555), BEB backoff 8.00 ms (try 2)
+[20:40:14.580] [INFO] [Station 03] Transmitting frame #3 (attempt 1)
+[20:40:14.581] [COLL] [Station 09] Collision voltage spike: 2.0V on wire!
+[20:40:14.582] [JAM ] [Station 09] Aborted -> 32-bit JAM (0x55555555), BEB backoff 200.00 ms (try 6)
+[20:40:14.582] [JAM ] [Station 03] Aborted -> 32-bit JAM (0x55555555), BEB backoff 4.00 ms (try 1)
+[20:40:14.587] [INFO] [Station 08] Transmitting frame #2 (attempt 3)
+[20:40:14.587] [COLL] [Station 03] Collision voltage spike: 2.0V on wire!
+[20:40:14.588] [JAM ] [Station 08] Aborted -> 32-bit JAM (0x55555555), BEB backoff 28.00 ms (try 3)
+[20:40:14.588] [JAM ] [Station 03] Aborted -> 32-bit JAM (0x55555555), BEB backoff 12.00 ms (try 2)
+[20:40:14.596] [INFO] [Station 07] Transmitting frame #1 (attempt 6)
+[20:40:14.604] [SUCC] [Station 07] Frame #1 delivered successfully! (latency: 152.76 ms, throughput: 3.35 kbps)
+[20:40:14.604] [INFO] [Station 03] Transmitting frame #3 (attempt 3)
+[20:40:14.612] [SUCC] [Station 03] Frame #3 delivered successfully! (latency: 32.61 ms, throughput: 15.70 kbps)
+[20:40:14.612] [INFO] [Station 07] Transmitting frame #2 (attempt 1)
+[20:40:14.613] [COLL] [Station 05] Collision voltage spike: 2.0V on wire!
+[20:40:14.614] [JAM ] [Station 05] Aborted -> 32-bit JAM (0x55555555), BEB backoff 112.00 ms (try 6)
+[20:40:14.614] [JAM ] [Station 07] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 1)
+[20:40:14.614] [INFO] [Station 07] Transmitting frame #2 (attempt 2)
+[20:40:14.622] [SUCC] [Station 07] Frame #2 delivered successfully! (latency: 15.60 ms, throughput: 32.82 kbps)
+[20:40:14.622] [INFO] [Station 03] Transmitting frame #4 (attempt 1)
+[20:40:14.623] [COLL] [Station 08] Collision voltage spike: 2.0V on wire!
+[20:40:14.624] [JAM ] [Station 08] Aborted -> 32-bit JAM (0x55555555), BEB backoff 60.00 ms (try 4)
+[20:40:14.624] [JAM ] [Station 03] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 1)
+[20:40:14.624] [INFO] [Station 03] Transmitting frame #4 (attempt 2)
+[20:40:14.625] [COLL] [Station 07] Collision voltage spike: 2.0V on wire!
+[20:40:14.626] [JAM ] [Station 07] Aborted -> 32-bit JAM (0x55555555), BEB backoff 4.00 ms (try 1)
+[20:40:14.626] [JAM ] [Station 03] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 2)
+[20:40:14.626] [INFO] [Station 03] Transmitting frame #4 (attempt 3)
+[20:40:14.634] [INFO] [Station 04] Transmitting frame #1 (attempt 6)
+[20:40:14.634] [SUCC] [Station 03] Frame #4 delivered successfully! (latency: 18.22 ms, throughput: 28.11 kbps)
+[20:40:14.635] [COLL] [Station 10] Collision voltage spike: 2.0V on wire!
+[20:40:14.635] [COLL] [Station 07] Collision voltage spike: 3.0V on wire!
+[20:40:14.636] [JAM ] [Station 10] Aborted -> 32-bit JAM (0x55555555), BEB backoff 4.00 ms (try 5)
+[20:40:14.636] [JAM ] [Station 07] Aborted -> 32-bit JAM (0x55555555), BEB backoff 8.00 ms (try 2)
+[20:40:14.636] [JAM ] [Station 04] Aborted -> 32-bit JAM (0x55555555), BEB backoff 12.00 ms (try 6)
+[20:40:14.638] [INFO] [Station 03] Transmitting frame #5 (attempt 1)
+[20:40:14.646] [SUCC] [Station 03] Frame #5 delivered successfully! (latency: 8.24 ms, throughput: 62.16 kbps)
+[20:40:14.646] [INFO] [Station 10] Transmitting frame #4 (attempt 6)
+[20:40:14.646] [COLL] [Station 07] Collision voltage spike: 2.0V on wire!
+[20:40:14.648] [JAM ] [Station 10] Aborted -> 32-bit JAM (0x55555555), BEB backoff 156.00 ms (try 6)
+[20:40:14.648] [JAM ] [Station 07] Aborted -> 32-bit JAM (0x55555555), BEB backoff 16.00 ms (try 3)
+[20:40:14.648] [INFO] [Station 04] Transmitting frame #1 (attempt 7)
+[20:40:14.649] [COLL] [Station 01] Collision voltage spike: 2.0V on wire!
+[20:40:14.650] [JAM ] [Station 01] Aborted -> 32-bit JAM (0x55555555), BEB backoff 96.00 ms (try 6)
+[20:40:14.650] [JAM ] [Station 04] Aborted -> 32-bit JAM (0x55555555), BEB backoff 40.00 ms (try 7)
+[20:40:14.664] [INFO] [Station 07] Transmitting frame #3 (attempt 4)
+[20:40:14.673] [SUCC] [Station 07] Frame #3 delivered successfully! (latency: 47.92 ms, throughput: 10.68 kbps)
+[20:40:14.675] [INFO] [Station 07] Transmitting frame #4 (attempt 1)
+[20:40:14.676] [COLL] [Station 06] Collision voltage spike: 2.0V on wire!
+[20:40:14.677] [JAM ] [Station 06] Aborted -> 32-bit JAM (0x55555555), BEB backoff 216.00 ms (try 7)
+[20:40:14.677] [JAM ] [Station 07] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 1)
+[20:40:14.677] [INFO] [Station 07] Transmitting frame #4 (attempt 2)
+[20:40:14.685] [SUCC] [Station 07] Frame #4 delivered successfully! (latency: 10.10 ms, throughput: 50.70 kbps)
+[20:40:14.685] [INFO] [Station 08] Transmitting frame #2 (attempt 5)
+[20:40:14.687] [COLL] [Station 07] Collision voltage spike: 2.0V on wire!
+[20:40:14.688] [JAM ] [Station 07] Aborted -> 32-bit JAM (0x55555555), BEB backoff 4.00 ms (try 1)
+[20:40:14.688] [JAM ] [Station 08] Aborted -> 32-bit JAM (0x55555555), BEB backoff 32.00 ms (try 5)
+[20:40:14.690] [INFO] [Station 04] Transmitting frame #1 (attempt 8)
+[20:40:14.698] [SUCC] [Station 04] Frame #1 delivered successfully! (latency: 246.56 ms, throughput: 2.08 kbps)
+[20:40:14.698] [INFO] [Station 07] Transmitting frame #5 (attempt 2)
+[20:40:14.699] [COLL] [Station 02] Collision voltage spike: 2.0V on wire!
+[20:40:14.700] [JAM ] [Station 02] Aborted -> 32-bit JAM (0x55555555), BEB backoff 276.00 ms (try 7)
+[20:40:14.700] [JAM ] [Station 07] Aborted -> 32-bit JAM (0x55555555), BEB backoff 12.00 ms (try 2)
+[20:40:14.701] [INFO] [Station 04] Transmitting frame #2 (attempt 1)
+[20:40:14.709] [SUCC] [Station 04] Frame #2 delivered successfully! (latency: 8.15 ms, throughput: 62.82 kbps)
+[20:40:14.712] [INFO] [Station 04] Transmitting frame #3 (attempt 1)
+[20:40:14.712] [COLL] [Station 07] Collision voltage spike: 2.0V on wire!
+[20:40:14.714] [JAM ] [Station 07] Aborted -> 32-bit JAM (0x55555555), BEB backoff 20.00 ms (try 3)
+[20:40:14.714] [JAM ] [Station 04] Aborted -> 32-bit JAM (0x55555555), BEB backoff 4.00 ms (try 1)
+[20:40:14.718] [INFO] [Station 04] Transmitting frame #3 (attempt 2)
+[20:40:14.726] [SUCC] [Station 04] Frame #3 delivered successfully! (latency: 13.90 ms, throughput: 36.82 kbps)
+[20:40:14.726] [INFO] [Station 08] Transmitting frame #2 (attempt 6)
+[20:40:14.727] [COLL] [Station 05] Collision voltage spike: 2.0V on wire!
+[20:40:14.728] [JAM ] [Station 05] Aborted -> 32-bit JAM (0x55555555), BEB backoff 100.00 ms (try 7)
+[20:40:14.728] [COLL] [Station 04] Collision voltage spike: 2.0V on wire!
+[20:40:14.728] [JAM ] [Station 08] Aborted -> 32-bit JAM (0x55555555), BEB backoff 100.00 ms (try 6)
+[20:40:14.729] [JAM ] [Station 04] Aborted -> 32-bit JAM (0x55555555), BEB backoff 4.00 ms (try 1)
+[20:40:14.733] [INFO] [Station 04] Transmitting frame #4 (attempt 2)
+[20:40:14.734] [COLL] [Station 07] Collision voltage spike: 2.0V on wire!
+[20:40:14.735] [JAM ] [Station 07] Aborted -> 32-bit JAM (0x55555555), BEB backoff 28.00 ms (try 4)
+[20:40:14.735] [JAM ] [Station 04] Aborted -> 32-bit JAM (0x55555555), BEB backoff 12.00 ms (try 2)
+[20:40:14.746] [INFO] [Station 01] Transmitting frame #1 (attempt 7)
+[20:40:14.748] [COLL] [Station 04] Collision voltage spike: 2.0V on wire!
+[20:40:14.749] [JAM ] [Station 04] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 3)
+[20:40:14.749] [INFO] [Station 04] Transmitting frame #4 (attempt 4)
+[20:40:14.749] [JAM ] [Station 01] Aborted -> 32-bit JAM (0x55555555), BEB backoff 40.00 ms (try 7)
+[20:40:14.757] [SUCC] [Station 04] Frame #4 delivered successfully! (latency: 29.71 ms, throughput: 17.23 kbps)
+[20:40:14.760] [INFO] [Station 04] Transmitting frame #5 (attempt 1)
+[20:40:14.768] [SUCC] [Station 04] Frame #5 delivered successfully! (latency: 8.20 ms, throughput: 62.40 kbps)
+[20:40:14.768] [INFO] [Station 07] Transmitting frame #5 (attempt 5)
+[20:40:14.777] [SUCC] [Station 07] Frame #5 delivered successfully! (latency: 89.52 ms, throughput: 5.72 kbps)
+[20:40:14.783] [INFO] [Station 09] Transmitting frame #2 (attempt 7)
+[20:40:14.791] [SUCC] [Station 09] Frame #2 delivered successfully! (latency: 317.66 ms, throughput: 1.61 kbps)
+[20:40:14.791] [INFO] [Station 01] Transmitting frame #1 (attempt 8)
+[20:40:14.799] [SUCC] [Station 01] Frame #1 delivered successfully! (latency: 346.03 ms, throughput: 1.48 kbps)
+[20:40:14.799] [INFO] [Station 09] Transmitting frame #3 (attempt 1)
+[20:40:14.808] [SUCC] [Station 09] Frame #3 delivered successfully! (latency: 12.70 ms, throughput: 40.32 kbps)
+[20:40:14.808] [INFO] [Station 01] Transmitting frame #2 (attempt 1)
+[20:40:14.808] [COLL] [Station 10] Collision voltage spike: 2.0V on wire!
+[20:40:14.809] [JAM ] [Station 10] Aborted -> 32-bit JAM (0x55555555), BEB backoff 336.00 ms (try 7)
+[20:40:14.809] [JAM ] [Station 01] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 1)
+[20:40:14.810] [INFO] [Station 01] Transmitting frame #2 (attempt 2)
+[20:40:14.810] [COLL] [Station 09] Collision voltage spike: 2.0V on wire!
+[20:40:14.812] [JAM ] [Station 09] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 1)
+[20:40:14.812] [INFO] [Station 09] Transmitting frame #4 (attempt 2)
+[20:40:14.812] [JAM ] [Station 01] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 2)
+[20:40:14.812] [COLL] [Station 01] Collision voltage spike: 2.0V on wire!
+[20:40:14.813] [JAM ] [Station 01] Aborted -> 32-bit JAM (0x55555555), BEB backoff 16.00 ms (try 3)
+[20:40:14.813] [JAM ] [Station 09] Aborted -> 32-bit JAM (0x55555555), BEB backoff 8.00 ms (try 2)
+[20:40:14.822] [INFO] [Station 09] Transmitting frame #4 (attempt 3)
+[20:40:14.830] [INFO] [Station 01] Transmitting frame #2 (attempt 4)
+[20:40:14.830] [SUCC] [Station 09] Frame #4 delivered successfully! (latency: 19.41 ms, throughput: 26.37 kbps)
+[20:40:14.830] [COLL] [Station 05] Collision voltage spike: 2.0V on wire!
+[20:40:14.830] [COLL] [Station 08] Collision voltage spike: 3.0V on wire!
+[20:40:14.831] [JAM ] [Station 05] Aborted -> 32-bit JAM (0x55555555), BEB backoff 44.00 ms (try 8)
+[20:40:14.832] [JAM ] [Station 08] Aborted -> 32-bit JAM (0x55555555), BEB backoff 160.00 ms (try 7)
+[20:40:14.832] [JAM ] [Station 01] Aborted -> 32-bit JAM (0x55555555), BEB backoff 44.00 ms (try 4)
+[20:40:14.832] [INFO] [Station 09] Transmitting frame #5 (attempt 1)
+[20:40:14.840] [SUCC] [Station 09] Frame #5 delivered successfully! (latency: 8.23 ms, throughput: 62.23 kbps)
+[20:40:14.876] [INFO] [Station 05] Transmitting frame #1 (attempt 9)
+[20:40:14.876] [COLL] [Station 01] Collision voltage spike: 2.0V on wire!
+[20:40:14.878] [JAM ] [Station 01] Aborted -> 32-bit JAM (0x55555555), BEB backoff 64.00 ms (try 5)
+[20:40:14.878] [JAM ] [Station 05] Aborted -> 32-bit JAM (0x55555555), BEB backoff 224.00 ms (try 9)
+[20:40:14.893] [INFO] [Station 06] Transmitting frame #1 (attempt 8)
+[20:40:14.902] [SUCC] [Station 06] Frame #1 delivered successfully! (latency: 451.95 ms, throughput: 1.13 kbps)
+[20:40:14.905] [INFO] [Station 06] Transmitting frame #2 (attempt 1)
+[20:40:14.913] [SUCC] [Station 06] Frame #2 delivered successfully! (latency: 8.29 ms, throughput: 61.74 kbps)
+[20:40:14.916] [INFO] [Station 06] Transmitting frame #3 (attempt 1)
+[20:40:14.924] [SUCC] [Station 06] Frame #3 delivered successfully! (latency: 8.15 ms, throughput: 62.86 kbps)
+[20:40:14.926] [INFO] [Station 06] Transmitting frame #4 (attempt 1)
+[20:40:14.934] [SUCC] [Station 06] Frame #4 delivered successfully! (latency: 8.13 ms, throughput: 63.00 kbps)
+[20:40:14.937] [INFO] [Station 06] Transmitting frame #5 (attempt 1)
+[20:40:14.945] [SUCC] [Station 06] Frame #5 delivered successfully! (latency: 8.23 ms, throughput: 62.23 kbps)
+[20:40:14.945] [INFO] [Station 01] Transmitting frame #2 (attempt 6)
+[20:40:14.954] [SUCC] [Station 01] Frame #2 delivered successfully! (latency: 151.83 ms, throughput: 3.37 kbps)
+[20:40:14.956] [INFO] [Station 01] Transmitting frame #3 (attempt 1)
+[20:40:14.964] [SUCC] [Station 01] Frame #3 delivered successfully! (latency: 8.13 ms, throughput: 62.95 kbps)
+[20:40:14.967] [INFO] [Station 01] Transmitting frame #4 (attempt 1)
+[20:40:14.975] [SUCC] [Station 01] Frame #4 delivered successfully! (latency: 8.19 ms, throughput: 62.55 kbps)
+[20:40:14.976] [INFO] [Station 02] Transmitting frame #1 (attempt 8)
+[20:40:14.985] [SUCC] [Station 02] Frame #1 delivered successfully! (latency: 531.08 ms, throughput: 0.96 kbps)
+[20:40:14.985] [INFO] [Station 01] Transmitting frame #5 (attempt 1)
+[20:40:14.993] [SUCC] [Station 01] Frame #5 delivered successfully! (latency: 14.53 ms, throughput: 35.24 kbps)
+[20:40:14.993] [INFO] [Station 02] Transmitting frame #2 (attempt 1)
+[20:40:14.994] [COLL] [Station 08] Collision voltage spike: 2.0V on wire!
+[20:40:14.995] [JAM ] [Station 08] Aborted -> 32-bit JAM (0x55555555), BEB backoff 676.00 ms (try 8)
+[20:40:14.995] [JAM ] [Station 02] Aborted -> 32-bit JAM (0x55555555), BEB backoff 0.00 ms (try 1)
+[20:40:14.995] [INFO] [Station 02] Transmitting frame #2 (attempt 2)
+[20:40:15.003] [SUCC] [Station 02] Frame #2 delivered successfully! (latency: 16.71 ms, throughput: 30.63 kbps)
+[20:40:15.008] [INFO] [Station 02] Transmitting frame #3 (attempt 1)
+[20:40:15.016] [SUCC] [Station 02] Frame #3 delivered successfully! (latency: 8.24 ms, throughput: 62.13 kbps)
+[20:40:15.018] [INFO] [Station 02] Transmitting frame #4 (attempt 1)
+[20:40:15.026] [SUCC] [Station 02] Frame #4 delivered successfully! (latency: 8.17 ms, throughput: 62.64 kbps)
+[20:40:15.028] [INFO] [Station 02] Transmitting frame #5 (attempt 1)
+[20:40:15.036] [SUCC] [Station 02] Frame #5 delivered successfully! (latency: 8.21 ms, throughput: 62.38 kbps)
+[20:40:15.102] [INFO] [Station 05] Transmitting frame #1 (attempt 10)
+[20:40:15.111] [SUCC] [Station 05] Frame #1 delivered successfully! (latency: 661.26 ms, throughput: 0.77 kbps)
+[20:40:15.112] [INFO] [Station 05] Transmitting frame #2 (attempt 1)
+[20:40:15.120] [SUCC] [Station 05] Frame #2 delivered successfully! (latency: 8.19 ms, throughput: 62.51 kbps)
+[20:40:15.122] [INFO] [Station 05] Transmitting frame #3 (attempt 1)
+[20:40:15.131] [SUCC] [Station 05] Frame #3 delivered successfully! (latency: 8.20 ms, throughput: 62.42 kbps)
+[20:40:15.133] [INFO] [Station 05] Transmitting frame #4 (attempt 1)
+[20:40:15.142] [SUCC] [Station 05] Frame #4 delivered successfully! (latency: 8.16 ms, throughput: 62.73 kbps)
+[20:40:15.144] [INFO] [Station 05] Transmitting frame #5 (attempt 1)
+[20:40:15.152] [SUCC] [Station 05] Frame #5 delivered successfully! (latency: 8.23 ms, throughput: 62.22 kbps)
+[20:40:15.152] [INFO] [Station 10] Transmitting frame #4 (attempt 8)
+[20:40:15.160] [SUCC] [Station 10] Frame #4 delivered successfully! (latency: 620.95 ms, throughput: 0.82 kbps)
+[20:40:15.162] [INFO] [Station 10] Transmitting frame #5 (attempt 1)
+[20:40:15.171] [SUCC] [Station 10] Frame #5 delivered successfully! (latency: 8.25 ms, throughput: 62.05 kbps)
+[20:40:15.674] [INFO] [Station 08] Transmitting frame #2 (attempt 9)
+[20:40:15.682] [SUCC] [Station 08] Frame #2 delivered successfully! (latency: 1115.02 ms, throughput: 0.46 kbps)
+[20:40:15.684] [INFO] [Station 08] Transmitting frame #3 (attempt 1)
+[20:40:15.692] [SUCC] [Station 08] Frame #3 delivered successfully! (latency: 8.18 ms, throughput: 62.57 kbps)
+[20:40:15.696] [INFO] [Station 08] Transmitting frame #4 (attempt 1)
+[20:40:15.704] [SUCC] [Station 08] Frame #4 delivered successfully! (latency: 8.14 ms, throughput: 62.87 kbps)
+[20:40:15.707] [INFO] [Station 08] Transmitting frame #5 (attempt 1)
+[20:40:15.715] [SUCC] [Station 08] Frame #5 delivered successfully! (latency: 8.20 ms, throughput: 62.46 kbps)
+
+====================================================================================================
+PER-STATION THREAD PERFORMANCE BREAKDOWN
+----------------------------------------------------------------------------------------------------
+Station    | Tries   | Success | Collisions | Throughput (bps) | Avg Delay (ms) | Backoff (ms)  
+----------------------------------------------------------------------------------------------------
+Station 01 | 17      | 5       | 12         |      2017.74 bps | 105.74         | 444.00        
+Station 02 | 13      | 5       | 8          |      2017.74 bps | 114.48         | 504.00        
+Station 03 | 17      | 5       | 12         |      2017.74 bps | 36.09          | 100.00        
+Station 04 | 16      | 5       | 11         |      2017.74 bps | 61.31          | 232.00        
+Station 05 | 14      | 5       | 9          |      2017.74 bps | 138.81         | 632.00        
+Station 06 | 12      | 5       | 7          |      2017.74 bps | 96.95          | 424.00        
+Station 07 | 19      | 5       | 14         |      2017.74 bps | 63.18          | 228.00        
+Station 08 | 18      | 5       | 13         |      2017.74 bps | 250.08         | 1160.00       
+Station 09 | 15      | 5       | 10         |      2017.74 bps | 74.74          | 312.00        
+Station 10 | 19      | 5       | 14         |      2017.74 bps | 141.82         | 620.00        
+==========================================================================
+GLOBAL SIMULATION PERFORMANCE SUMMARY
+--------------------------------------------------------------------------
+Elapsed Simulation Time    : 1.269 seconds
+Total Frame Attempts       : 160
+Total Frames Delivered     : 50
+Total Collisions Detected  : 69
+Total 32-bit Jam Signals   : 110
+Throughput Delivered       : 20177.41 bps (20.18 kbps)
+Channel Physical Capacity  : 64000.00 bps (64.00 kbps)
+Channel Access Efficiency  : 31.53%
+Delivery Success Ratio     : 100.0%
+==========================================================================
+

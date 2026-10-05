@@ -1,36 +1,32 @@
 # ==============================================================================
 # Makefile
 # CSE/PC/B/S/314 Computer Networks Lab - Assignment 3: CSMA Protocols
+# Concurrent Multi-Threaded Simulation (POSIX pthreads, Mutexes & Condition Vars)
 # ==============================================================================
 
 CC ?= gcc
-CFLAGS ?= -Wall -Wextra -O2 -Icommon -Istation
-LDFLAGS ?= -lm
-
-COMMON_SRCS = common/channel_wire.c common/logger.c
-SERVER_SRCS = channel/channel_server.c $(COMMON_SRCS)
-STATION_SRCS = station/station.c station/mac_strategies.c $(COMMON_SRCS)
+CFLAGS ?= -Wall -Wextra -O2 -pthread
+LDFLAGS ?= -pthread -lm
 
 BIN_DIR = bin
 LOG_DIR = logs
 RESULTS_DIR = results
 
-TARGETS = $(BIN_DIR)/channel_server $(BIN_DIR)/station
+TARGET = $(BIN_DIR)/csma_sim
 
-.PHONY: all clean dirs
+.PHONY: all clean dirs run
 
-all: dirs $(TARGETS)
+all: dirs $(TARGET)
 
 dirs:
 	@mkdir -p $(BIN_DIR) $(LOG_DIR) $(RESULTS_DIR)/charts $(RESULTS_DIR)/data
 
-$(BIN_DIR)/channel_server: $(SERVER_SRCS)
+$(TARGET): csma_sim.c
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 	@echo "  [BUILD] Successfully built $@"
 
-$(BIN_DIR)/station: $(STATION_SRCS)
-	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
-	@echo "  [BUILD] Successfully built $@"
+run: $(TARGET)
+	@./$(TARGET)
 
 clean:
 	rm -rf $(BIN_DIR)/* $(LOG_DIR)/*

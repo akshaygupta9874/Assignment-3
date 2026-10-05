@@ -1,0 +1,298 @@
+
+==========================================================================
+    CONCURRENT MULTI-THREADED CSMA & CSMA/CD SIMULATOR (POSIX pthreads)  
+==========================================================================
+Contending Station Threads  : 10
+MAC Protocol Strategy       : p-Persistent CSMA
+Frames per Station          : 5
+Persistence Probability p   : 0.10 (Optimal ~ 1/N)
+Slot Time (2 * Tau)         : 4.00 ms
+Frame Transmission Time     : 8.00 ms (64 Bytes)
+Jamming Signal Pattern      : 32-bit (0x55555555)
+Synchronization Primitives  : POSIX pthread_mutex_t & pthread_cond_t
+Detailed Execution Log File : logs/csma_simulation.log
+==========================================================================
+
+[20:40:18.016] [INFO] [Station 10] Transmitting frame #1 (attempt 1)
+[20:40:18.017] [WARN] [Station 03] Preempted in slot -> Backing off 16.00 ms
+[20:40:18.019] [WARN] [Station 06] Preempted in slot -> Backing off 8.00 ms
+[20:40:18.019] [WARN] [Station 04] Preempted in slot -> Backing off 56.00 ms
+[20:40:18.019] [WARN] [Station 01] Preempted in slot -> Backing off 16.00 ms
+[20:40:18.019] [WARN] [Station 05] Preempted in slot -> Backing off 16.00 ms
+[20:40:18.019] [WARN] [Station 02] Preempted in slot -> Backing off 8.00 ms
+[20:40:18.019] [WARN] [Station 08] Preempted in slot -> Backing off 8.00 ms
+[20:40:18.020] [WARN] [Station 09] Preempted in slot -> Backing off 52.00 ms
+[20:40:18.020] [WARN] [Station 07] Preempted in slot -> Backing off 32.00 ms
+[20:40:18.025] [SUCC] [Station 10] Frame #1 delivered successfully! (latency: 21.07 ms, throughput: 24.30 kbps)
+[20:40:18.062] [INFO] [Station 08] Transmitting frame #1 (attempt 1)
+[20:40:18.063] [WARN] [Station 03] Preempted in slot -> Backing off 4.00 ms
+[20:40:18.065] [WARN] [Station 07] Preempted in slot -> Backing off 8.00 ms
+[20:40:18.065] [WARN] [Station 01] Preempted in slot -> Backing off 44.00 ms
+[20:40:18.065] [WARN] [Station 10] Preempted in slot -> Backing off 32.00 ms
+[20:40:18.065] [WARN] [Station 06] Preempted in slot -> Backing off 60.00 ms
+[20:40:18.066] [WARN] [Station 05] Preempted in slot -> Backing off 16.00 ms
+[20:40:18.066] [WARN] [Station 02] Preempted in slot -> Backing off 64.00 ms
+[20:40:18.071] [SUCC] [Station 08] Frame #1 delivered successfully! (latency: 63.59 ms, throughput: 8.05 kbps)
+[20:40:18.075] [INFO] [Station 04] Transmitting frame #1 (attempt 1)
+[20:40:18.076] [WARN] [Station 09] Preempted in slot -> Backing off 64.00 ms
+[20:40:18.077] [WARN] [Station 07] Preempted in slot -> Backing off 40.00 ms
+[20:40:18.078] [WARN] [Station 08] Preempted in slot -> Backing off 36.00 ms
+[20:40:18.079] [WARN] [Station 03] Preempted in slot -> Backing off 24.00 ms
+[20:40:18.084] [SUCC] [Station 04] Frame #1 delivered successfully! (latency: 77.38 ms, throughput: 6.62 kbps)
+[20:40:18.084] [INFO] [Station 05] Transmitting frame #1 (attempt 1)
+[20:40:18.092] [SUCC] [Station 05] Frame #1 delivered successfully! (latency: 89.85 ms, throughput: 5.70 kbps)
+[20:40:18.105] [INFO] [Station 04] Transmitting frame #2 (attempt 1)
+[20:40:18.106] [WARN] [Station 10] Preempted in slot -> Backing off 24.00 ms
+[20:40:18.107] [WARN] [Station 03] Preempted in slot -> Backing off 44.00 ms
+[20:40:18.109] [WARN] [Station 05] Preempted in slot -> Backing off 28.00 ms
+[20:40:18.114] [SUCC] [Station 04] Frame #2 delivered successfully! (latency: 26.60 ms, throughput: 19.25 kbps)
+[20:40:18.130] [INFO] [Station 02] Transmitting frame #1 (attempt 1)
+[20:40:18.130] [WARN] [Station 07] Preempted in slot -> Backing off 24.00 ms
+[20:40:18.130] [WARN] [Station 01] Preempted in slot -> Backing off 28.00 ms
+[20:40:18.131] [WARN] [Station 08] Preempted in slot -> Backing off 8.00 ms
+[20:40:18.131] [WARN] [Station 04] Preempted in slot -> Backing off 28.00 ms
+[20:40:18.134] [WARN] [Station 06] Preempted in slot -> Backing off 12.00 ms
+[20:40:18.134] [WARN] [Station 10] Preempted in slot -> Backing off 24.00 ms
+[20:40:18.139] [SUCC] [Station 02] Frame #1 delivered successfully! (latency: 135.80 ms, throughput: 3.77 kbps)
+[20:40:18.143] [INFO] [Station 02] Transmitting frame #2 (attempt 1)
+[20:40:18.143] [WARN] [Station 05] Preempted in slot -> Backing off 44.00 ms
+[20:40:18.144] [WARN] [Station 08] Preempted in slot -> Backing off 12.00 ms
+[20:40:18.145] [WARN] [Station 09] Preempted in slot -> Backing off 52.00 ms
+[20:40:18.151] [SUCC] [Station 02] Frame #2 delivered successfully! (latency: 8.39 ms, throughput: 61.03 kbps)
+[20:40:18.154] [INFO] [Station 02] Transmitting frame #3 (attempt 1)
+[20:40:18.156] [WARN] [Station 06] Preempted in slot -> Backing off 40.00 ms
+[20:40:18.156] [WARN] [Station 03] Preempted in slot -> Backing off 52.00 ms
+[20:40:18.159] [WARN] [Station 07] Preempted in slot -> Backing off 64.00 ms
+[20:40:18.163] [SUCC] [Station 02] Frame #3 delivered successfully! (latency: 8.38 ms, throughput: 61.09 kbps)
+[20:40:18.167] [INFO] [Station 10] Transmitting frame #2 (attempt 1)
+[20:40:18.170] [WARN] [Station 02] Preempted in slot -> Backing off 56.00 ms
+[20:40:18.171] [WARN] [Station 01] Preempted in slot -> Backing off 36.00 ms
+[20:40:18.171] [WARN] [Station 04] Preempted in slot -> Backing off 48.00 ms
+[20:40:18.171] [WARN] [Station 08] Preempted in slot -> Backing off 44.00 ms
+[20:40:18.176] [SUCC] [Station 10] Frame #2 delivered successfully! (latency: 147.93 ms, throughput: 3.46 kbps)
+[20:40:18.191] [INFO] [Station 10] Transmitting frame #3 (attempt 1)
+[20:40:18.192] [WARN] [Station 05] Preempted in slot -> Backing off 8.00 ms
+[20:40:18.200] [SUCC] [Station 10] Frame #3 delivered successfully! (latency: 20.98 ms, throughput: 24.40 kbps)
+[20:40:18.208] [INFO] [Station 05] Transmitting frame #2 (attempt 1)
+[20:40:18.212] [WARN] [Station 01] Preempted in slot -> Backing off 44.00 ms
+[20:40:18.213] [WARN] [Station 03] Preempted in slot -> Backing off 52.00 ms
+[20:40:18.212] [WARN] [Station 09] Preempted in slot -> Backing off 24.00 ms
+[20:40:18.213] [WARN] [Station 10] Preempted in slot -> Backing off 64.00 ms
+[20:40:18.213] [WARN] [Station 06] Preempted in slot -> Backing off 28.00 ms
+[20:40:18.217] [SUCC] [Station 05] Frame #2 delivered successfully! (latency: 120.66 ms, throughput: 4.24 kbps)
+[20:40:18.231] [INFO] [Station 02] Transmitting frame #4 (attempt 1)
+[20:40:18.231] [WARN] [Station 07] Preempted in slot -> Backing off 44.00 ms
+[20:40:18.233] [WARN] [Station 04] Preempted in slot -> Backing off 32.00 ms
+[20:40:18.234] [WARN] [Station 08] Preempted in slot -> Backing off 40.00 ms
+[20:40:18.234] [WARN] [Station 05] Preempted in slot -> Backing off 8.00 ms
+[20:40:18.239] [SUCC] [Station 02] Frame #4 delivered successfully! (latency: 73.37 ms, throughput: 6.98 kbps)
+[20:40:18.242] [INFO] [Station 02] Transmitting frame #5 (attempt 1)
+[20:40:18.243] [WARN] [Station 09] Preempted in slot -> Backing off 8.00 ms
+[20:40:18.245] [WARN] [Station 06] Preempted in slot -> Backing off 8.00 ms
+[20:40:18.246] [WARN] [Station 05] Preempted in slot -> Backing off 44.00 ms
+[20:40:18.250] [SUCC] [Station 02] Frame #5 delivered successfully! (latency: 8.30 ms, throughput: 61.66 kbps)
+[20:40:18.278] [INFO] [Station 08] Transmitting frame #2 (attempt 1)
+[20:40:18.279] [WARN] [Station 06] Preempted in slot -> Backing off 8.00 ms
+[20:40:18.279] [WARN] [Station 04] Preempted in slot -> Backing off 12.00 ms
+[20:40:18.280] [WARN] [Station 07] Preempted in slot -> Backing off 12.00 ms
+[20:40:18.281] [WARN] [Station 09] Preempted in slot -> Backing off 64.00 ms
+[20:40:18.282] [WARN] [Station 10] Preempted in slot -> Backing off 4.00 ms
+[20:40:18.282] [WARN] [Station 03] Preempted in slot -> Backing off 44.00 ms
+[20:40:18.282] [WARN] [Station 01] Preempted in slot -> Backing off 28.00 ms
+[20:40:18.287] [SUCC] [Station 08] Frame #2 delivered successfully! (latency: 213.00 ms, throughput: 2.40 kbps)
+[20:40:18.299] [INFO] [Station 08] Transmitting frame #3 (attempt 1)
+[20:40:18.299] [WARN] [Station 10] Preempted in slot -> Backing off 4.00 ms
+[20:40:18.300] [WARN] [Station 06] Preempted in slot -> Backing off 48.00 ms
+[20:40:18.300] [WARN] [Station 04] Preempted in slot -> Backing off 44.00 ms
+[20:40:18.300] [WARN] [Station 07] Preempted in slot -> Backing off 64.00 ms
+[20:40:18.303] [WARN] [Station 05] Preempted in slot -> Backing off 8.00 ms
+[20:40:18.308] [SUCC] [Station 08] Frame #3 delivered successfully! (latency: 17.01 ms, throughput: 30.10 kbps)
+[20:40:18.308] [INFO] [Station 10] Transmitting frame #4 (attempt 1)
+[20:40:18.313] [WARN] [Station 08] Preempted in slot -> Backing off 32.00 ms
+[20:40:18.316] [SUCC] [Station 10] Frame #4 delivered successfully! (latency: 112.34 ms, throughput: 4.56 kbps)
+[20:40:18.326] [INFO] [Station 03] Transmitting frame #1 (attempt 1)
+[20:40:18.327] [WARN] [Station 10] Preempted in slot -> Backing off 44.00 ms
+[20:40:18.329] [WARN] [Station 01] Preempted in slot -> Backing off 56.00 ms
+[20:40:18.329] [WARN] [Station 05] Preempted in slot -> Backing off 28.00 ms
+[20:40:18.335] [SUCC] [Station 03] Frame #1 delivered successfully! (latency: 329.87 ms, throughput: 1.55 kbps)
+[20:40:18.363] [INFO] [Station 08] Transmitting frame #4 (attempt 1)
+[20:40:18.363] [WARN] [Station 05] Preempted in slot -> Backing off 60.00 ms
+[20:40:18.363] [WARN] [Station 09] Preempted in slot -> Backing off 64.00 ms
+[20:40:18.363] [WARN] [Station 03] Preempted in slot -> Backing off 36.00 ms
+[20:40:18.364] [WARN] [Station 06] Preempted in slot -> Backing off 40.00 ms
+[20:40:18.365] [WARN] [Station 04] Preempted in slot -> Backing off 8.00 ms
+[20:40:18.368] [WARN] [Station 07] Preempted in slot -> Backing off 36.00 ms
+[20:40:18.371] [SUCC] [Station 08] Frame #4 delivered successfully! (latency: 61.89 ms, throughput: 8.27 kbps)
+[20:40:18.394] [INFO] [Station 04] Transmitting frame #3 (attempt 1)
+[20:40:18.397] [WARN] [Station 10] Preempted in slot -> Backing off 8.00 ms
+[20:40:18.398] [WARN] [Station 08] Preempted in slot -> Backing off 52.00 ms
+[20:40:18.398] [WARN] [Station 01] Preempted in slot -> Backing off 60.00 ms
+[20:40:18.403] [SUCC] [Station 04] Frame #3 delivered successfully! (latency: 287.74 ms, throughput: 1.78 kbps)
+[20:40:18.422] [INFO] [Station 07] Transmitting frame #1 (attempt 1)
+[20:40:18.422] [WARN] [Station 10] Preempted in slot -> Backing off 48.00 ms
+[20:40:18.423] [WARN] [Station 06] Preempted in slot -> Backing off 24.00 ms
+[20:40:18.423] [WARN] [Station 04] Preempted in slot -> Backing off 12.00 ms
+[20:40:18.424] [WARN] [Station 03] Preempted in slot -> Backing off 12.00 ms
+[20:40:18.431] [SUCC] [Station 07] Frame #1 delivered successfully! (latency: 423.35 ms, throughput: 1.21 kbps)
+[20:40:18.447] [INFO] [Station 09] Transmitting frame #1 (attempt 1)
+[20:40:18.448] [WARN] [Station 05] Preempted in slot -> Backing off 4.00 ms
+[20:40:18.448] [WARN] [Station 04] Preempted in slot -> Backing off 28.00 ms
+[20:40:18.449] [WARN] [Station 03] Preempted in slot -> Backing off 32.00 ms
+[20:40:18.450] [WARN] [Station 07] Preempted in slot -> Backing off 12.00 ms
+[20:40:18.452] [WARN] [Station 06] Preempted in slot -> Backing off 12.00 ms
+[20:40:18.456] [SUCC] [Station 09] Frame #1 delivered successfully! (latency: 448.74 ms, throughput: 1.14 kbps)
+[20:40:18.477] [INFO] [Station 04] Transmitting frame #4 (attempt 1)
+[20:40:18.477] [WARN] [Station 08] Preempted in slot -> Backing off 44.00 ms
+[20:40:18.477] [WARN] [Station 05] Preempted in slot -> Backing off 12.00 ms
+[20:40:18.477] [WARN] [Station 06] Preempted in slot -> Backing off 44.00 ms
+[20:40:18.479] [WARN] [Station 10] Preempted in slot -> Backing off 40.00 ms
+[20:40:18.480] [WARN] [Station 01] Preempted in slot -> Backing off 36.00 ms
+[20:40:18.480] [WARN] [Station 07] Preempted in slot -> Backing off 52.00 ms
+[20:40:18.481] [WARN] [Station 09] Preempted in slot -> Backing off 32.00 ms
+[20:40:18.485] [SUCC] [Station 04] Frame #4 delivered successfully! (latency: 78.95 ms, throughput: 6.49 kbps)
+[20:40:18.511] [INFO] [Station 03] Transmitting frame #2 (attempt 1)
+[20:40:18.511] [WARN] [Station 05] Preempted in slot -> Backing off 16.00 ms
+[20:40:18.515] [WARN] [Station 04] Preempted in slot -> Backing off 64.00 ms
+[20:40:18.519] [SUCC] [Station 03] Frame #2 delivered successfully! (latency: 182.16 ms, throughput: 2.81 kbps)
+[20:40:18.524] [INFO] [Station 10] Transmitting frame #5 (attempt 1)
+[20:40:18.525] [WARN] [Station 03] Preempted in slot -> Backing off 48.00 ms
+[20:40:18.525] [WARN] [Station 08] Preempted in slot -> Backing off 28.00 ms
+[20:40:18.526] [WARN] [Station 06] Preempted in slot -> Backing off 20.00 ms
+[20:40:18.528] [WARN] [Station 01] Preempted in slot -> Backing off 40.00 ms
+[20:40:18.528] [WARN] [Station 09] Preempted in slot -> Backing off 12.00 ms
+[20:40:18.532] [SUCC] [Station 10] Frame #5 delivered successfully! (latency: 213.36 ms, throughput: 2.40 kbps)
+[20:40:18.532] [INFO] [Station 05] Transmitting frame #3 (attempt 1)
+[20:40:18.536] [WARN] [Station 07] Preempted in slot -> Backing off 36.00 ms
+[20:40:18.541] [SUCC] [Station 05] Frame #3 delivered successfully! (latency: 319.59 ms, throughput: 1.60 kbps)
+[20:40:18.555] [INFO] [Station 06] Transmitting frame #1 (attempt 1)
+[20:40:18.558] [WARN] [Station 09] Preempted in slot -> Backing off 48.00 ms
+[20:40:18.558] [WARN] [Station 08] Preempted in slot -> Backing off 44.00 ms
+[20:40:18.558] [WARN] [Station 05] Preempted in slot -> Backing off 20.00 ms
+[20:40:18.564] [SUCC] [Station 06] Frame #1 delivered successfully! (latency: 561.52 ms, throughput: 0.91 kbps)
+[20:40:18.579] [INFO] [Station 04] Transmitting frame #5 (attempt 1)
+[20:40:18.581] [WARN] [Station 01] Preempted in slot -> Backing off 52.00 ms
+[20:40:18.581] [WARN] [Station 07] Preempted in slot -> Backing off 32.00 ms
+[20:40:18.582] [WARN] [Station 03] Preempted in slot -> Backing off 24.00 ms
+[20:40:18.582] [WARN] [Station 06] Preempted in slot -> Backing off 52.00 ms
+[20:40:18.583] [WARN] [Station 05] Preempted in slot -> Backing off 40.00 ms
+[20:40:18.588] [SUCC] [Station 04] Frame #5 delivered successfully! (latency: 98.27 ms, throughput: 5.21 kbps)
+[20:40:18.607] [INFO] [Station 09] Transmitting frame #2 (attempt 1)
+[20:40:18.611] [WARN] [Station 08] Preempted in slot -> Backing off 12.00 ms
+[20:40:18.611] [WARN] [Station 03] Preempted in slot -> Backing off 36.00 ms
+[20:40:18.615] [SUCC] [Station 09] Frame #2 delivered successfully! (latency: 155.15 ms, throughput: 3.30 kbps)
+[20:40:18.615] [INFO] [Station 07] Transmitting frame #2 (attempt 1)
+[20:40:18.621] [WARN] [Station 09] Preempted in slot -> Backing off 36.00 ms
+[20:40:18.624] [SUCC] [Station 07] Frame #2 delivered successfully! (latency: 190.70 ms, throughput: 2.68 kbps)
+[20:40:18.626] [INFO] [Station 07] Transmitting frame #3 (attempt 1)
+[20:40:18.628] [WARN] [Station 08] Preempted in slot -> Backing off 4.00 ms
+[20:40:18.629] [WARN] [Station 05] Preempted in slot -> Backing off 20.00 ms
+[20:40:18.635] [SUCC] [Station 07] Frame #3 delivered successfully! (latency: 8.45 ms, throughput: 60.60 kbps)
+[20:40:18.643] [INFO] [Station 06] Transmitting frame #2 (attempt 1)
+[20:40:18.647] [WARN] [Station 07] Preempted in slot -> Backing off 40.00 ms
+[20:40:18.648] [WARN] [Station 08] Preempted in slot -> Backing off 4.00 ms
+[20:40:18.648] [WARN] [Station 01] Preempted in slot -> Backing off 64.00 ms
+[20:40:18.652] [SUCC] [Station 06] Frame #2 delivered successfully! (latency: 86.41 ms, throughput: 5.93 kbps)
+[20:40:18.652] [INFO] [Station 08] Transmitting frame #5 (attempt 1)
+[20:40:18.656] [WARN] [Station 03] Preempted in slot -> Backing off 64.00 ms
+[20:40:18.656] [WARN] [Station 05] Preempted in slot -> Backing off 40.00 ms
+[20:40:18.660] [SUCC] [Station 08] Frame #5 delivered successfully! (latency: 287.53 ms, throughput: 1.78 kbps)
+[20:40:18.660] [INFO] [Station 06] Transmitting frame #3 (attempt 1)
+[20:40:18.665] [WARN] [Station 09] Preempted in slot -> Backing off 16.00 ms
+[20:40:18.669] [SUCC] [Station 06] Frame #3 delivered successfully! (latency: 13.65 ms, throughput: 37.52 kbps)
+[20:40:18.690] [INFO] [Station 06] Transmitting frame #4 (attempt 1)
+[20:40:18.692] [WARN] [Station 07] Preempted in slot -> Backing off 44.00 ms
+[20:40:18.694] [WARN] [Station 09] Preempted in slot -> Backing off 64.00 ms
+[20:40:18.698] [SUCC] [Station 06] Frame #4 delivered successfully! (latency: 25.64 ms, throughput: 19.97 kbps)
+[20:40:18.737] [INFO] [Station 05] Transmitting frame #4 (attempt 1)
+[20:40:18.738] [WARN] [Station 03] Preempted in slot -> Backing off 40.00 ms
+[20:40:18.738] [WARN] [Station 01] Preempted in slot -> Backing off 20.00 ms
+[20:40:18.739] [WARN] [Station 06] Preempted in slot -> Backing off 24.00 ms
+[20:40:18.740] [WARN] [Station 07] Preempted in slot -> Backing off 60.00 ms
+[20:40:18.745] [SUCC] [Station 05] Frame #4 delivered successfully! (latency: 200.07 ms, throughput: 2.56 kbps)
+[20:40:18.757] [INFO] [Station 05] Transmitting frame #5 (attempt 1)
+[20:40:18.758] [COLL] [Station 09] Collision voltage spike: 2.0V on wire!
+[20:40:18.763] [WARN] [Station 01] Preempted in slot -> Backing off 20.00 ms
+[20:40:18.766] [COLL] [Station 05] Collided -> Uniform random backoff 56.00 ms (try 1)
+[20:40:18.767] [COLL] [Station 09] Collided -> Uniform random backoff 64.00 ms (try 1)
+[20:40:18.771] [INFO] [Station 06] Transmitting frame #5 (attempt 1)
+[20:40:18.779] [SUCC] [Station 06] Frame #5 delivered successfully! (latency: 78.44 ms, throughput: 6.53 kbps)
+[20:40:18.818] [INFO] [Station 01] Transmitting frame #1 (attempt 1)
+[20:40:18.818] [WARN] [Station 07] Preempted in slot -> Backing off 40.00 ms
+[20:40:18.822] [WARN] [Station 03] Preempted in slot -> Backing off 56.00 ms
+[20:40:18.826] [SUCC] [Station 01] Frame #1 delivered successfully! (latency: 819.45 ms, throughput: 0.62 kbps)
+[20:40:18.827] [INFO] [Station 01] Transmitting frame #2 (attempt 1)
+[20:40:18.830] [WARN] [Station 05] Preempted in slot -> Backing off 28.00 ms
+[20:40:18.836] [SUCC] [Station 01] Frame #2 delivered successfully! (latency: 8.54 ms, throughput: 59.92 kbps)
+[20:40:18.848] [INFO] [Station 01] Transmitting frame #3 (attempt 1)
+[20:40:18.849] [WARN] [Station 09] Preempted in slot -> Backing off 20.00 ms
+[20:40:18.857] [SUCC] [Station 01] Frame #3 delivered successfully! (latency: 17.07 ms, throughput: 29.99 kbps)
+[20:40:18.877] [INFO] [Station 05] Transmitting frame #5 (attempt 2)
+[20:40:18.877] [WARN] [Station 09] Preempted in slot -> Backing off 48.00 ms
+[20:40:18.880] [WARN] [Station 07] Preempted in slot -> Backing off 8.00 ms
+[20:40:18.880] [WARN] [Station 01] Preempted in slot -> Backing off 4.00 ms
+[20:40:18.883] [WARN] [Station 03] Preempted in slot -> Backing off 16.00 ms
+[20:40:18.885] [SUCC] [Station 05] Frame #5 delivered successfully! (latency: 136.65 ms, throughput: 3.75 kbps)
+[20:40:18.907] [INFO] [Station 03] Transmitting frame #3 (attempt 1)
+[20:40:18.909] [WARN] [Station 07] Preempted in slot -> Backing off 56.00 ms
+[20:40:18.911] [WARN] [Station 01] Preempted in slot -> Backing off 60.00 ms
+[20:40:18.916] [SUCC] [Station 03] Frame #3 delivered successfully! (latency: 394.77 ms, throughput: 1.30 kbps)
+[20:40:18.926] [INFO] [Station 09] Transmitting frame #3 (attempt 2)
+[20:40:18.927] [WARN] [Station 03] Preempted in slot -> Backing off 20.00 ms
+[20:40:18.934] [SUCC] [Station 09] Frame #3 delivered successfully! (latency: 317.51 ms, throughput: 1.61 kbps)
+[20:40:18.990] [INFO] [Station 07] Transmitting frame #4 (attempt 1)
+[20:40:18.992] [WARN] [Station 01] Preempted in slot -> Backing off 4.00 ms
+[20:40:18.992] [WARN] [Station 09] Preempted in slot -> Backing off 20.00 ms
+[20:40:18.993] [WARN] [Station 03] Preempted in slot -> Backing off 12.00 ms
+[20:40:18.999] [SUCC] [Station 07] Frame #4 delivered successfully! (latency: 360.63 ms, throughput: 1.42 kbps)
+[20:40:19.007] [INFO] [Station 01] Transmitting frame #4 (attempt 1)
+[20:40:19.010] [WARN] [Station 03] Preempted in slot -> Backing off 16.00 ms
+[20:40:19.011] [WARN] [Station 07] Preempted in slot -> Backing off 20.00 ms
+[20:40:19.016] [SUCC] [Station 01] Frame #4 delivered successfully! (latency: 156.55 ms, throughput: 3.27 kbps)
+[20:40:19.016] [INFO] [Station 09] Transmitting frame #4 (attempt 1)
+[20:40:19.024] [SUCC] [Station 09] Frame #4 delivered successfully! (latency: 86.28 ms, throughput: 5.93 kbps)
+[20:40:19.031] [INFO] [Station 03] Transmitting frame #4 (attempt 1)
+[20:40:19.033] [WARN] [Station 01] Preempted in slot -> Backing off 8.00 ms
+[20:40:19.034] [WARN] [Station 09] Preempted in slot -> Backing off 48.00 ms
+[20:40:19.036] [WARN] [Station 07] Preempted in slot -> Backing off 44.00 ms
+[20:40:19.039] [SUCC] [Station 03] Frame #4 delivered successfully! (latency: 120.76 ms, throughput: 4.24 kbps)
+[20:40:19.068] [INFO] [Station 03] Transmitting frame #5 (attempt 1)
+[20:40:19.070] [WARN] [Station 01] Preempted in slot -> Backing off 40.00 ms
+[20:40:19.076] [SUCC] [Station 03] Frame #5 delivered successfully! (latency: 33.55 ms, throughput: 15.26 kbps)
+[20:40:19.097] [INFO] [Station 07] Transmitting frame #5 (attempt 1)
+[20:40:19.099] [WARN] [Station 09] Preempted in slot -> Backing off 24.00 ms
+[20:40:19.106] [SUCC] [Station 07] Frame #5 delivered successfully! (latency: 102.88 ms, throughput: 4.98 kbps)
+[20:40:19.140] [INFO] [Station 01] Transmitting frame #5 (attempt 1)
+[20:40:19.144] [WARN] [Station 09] Preempted in slot -> Backing off 28.00 ms
+[20:40:19.149] [SUCC] [Station 01] Frame #5 delivered successfully! (latency: 129.28 ms, throughput: 3.96 kbps)
+[20:40:19.173] [INFO] [Station 09] Transmitting frame #5 (attempt 1)
+[20:40:19.181] [SUCC] [Station 09] Frame #5 delivered successfully! (latency: 155.94 ms, throughput: 3.28 kbps)
+
+====================================================================================================
+PER-STATION THREAD PERFORMANCE BREAKDOWN
+----------------------------------------------------------------------------------------------------
+Station    | Tries   | Success | Collisions | Throughput (bps) | Avg Delay (ms) | Backoff (ms)  
+----------------------------------------------------------------------------------------------------
+Station 01 | 5       | 5       | 0          |      2165.46 bps | 226.18         | 1032.00       
+Station 02 | 5       | 5       | 0          |      2165.46 bps | 46.85          | 188.00        
+Station 03 | 5       | 5       | 0          |      2165.46 bps | 212.22         | 976.00        
+Station 04 | 5       | 5       | 0          |      2165.46 bps | 113.79         | 504.00        
+Station 05 | 6       | 5       | 1          |      2165.46 bps | 173.37         | 756.00        
+Station 06 | 5       | 5       | 0          |      2165.46 bps | 153.13         | 684.00        
+Station 07 | 5       | 5       | 0          |      2165.46 bps | 217.20         | 1020.00       
+Station 08 | 5       | 5       | 0          |      2165.46 bps | 128.60         | 568.00        
+Station 09 | 6       | 5       | 1          |      2165.46 bps | 232.73         | 1064.00       
+Station 10 | 5       | 5       | 0          |      2165.46 bps | 103.13         | 452.00        
+==========================================================================
+GLOBAL SIMULATION PERFORMANCE SUMMARY
+--------------------------------------------------------------------------
+Elapsed Simulation Time    : 1.182 seconds
+Total Frame Attempts       : 52
+Total Frames Delivered     : 50
+Total Collisions Detected  : 1
+Total 32-bit Jam Signals   : 0
+Throughput Delivered       : 21654.57 bps (21.65 kbps)
+Channel Physical Capacity  : 64000.00 bps (64.00 kbps)
+Channel Access Efficiency  : 33.84%
+Delivery Success Ratio     : 100.0%
+==========================================================================
+

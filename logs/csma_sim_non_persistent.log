@@ -1,0 +1,408 @@
+
+==========================================================================
+    CONCURRENT MULTI-THREADED CSMA & CSMA/CD SIMULATOR (POSIX pthreads)  
+==========================================================================
+Contending Station Threads  : 10
+MAC Protocol Strategy       : Non-Persistent CSMA
+Frames per Station          : 5
+Slot Time (2 * Tau)         : 4.00 ms
+Frame Transmission Time     : 8.00 ms (64 Bytes)
+Jamming Signal Pattern      : 32-bit (0x55555555)
+Synchronization Primitives  : POSIX pthread_mutex_t & pthread_cond_t
+Detailed Execution Log File : logs/csma_simulation.log
+==========================================================================
+
+[20:40:16.926] [INFO] [Station 01] Transmitting frame #1 (attempt 1)
+[20:40:16.927] [COLL] [Station 04] Collision voltage spike: 2.0V on wire!
+[20:40:16.927] [COLL] [Station 09] Collision voltage spike: 3.0V on wire!
+[20:40:16.928] [COLL] [Station 10] Collision voltage spike: 4.0V on wire!
+[20:40:16.928] [COLL] [Station 05] Collision voltage spike: 5.0V on wire!
+[20:40:16.928] [WARN] [Station 08] Channel BUSY (5.0V) -> Backing off 24.00 ms
+[20:40:16.929] [WARN] [Station 07] Channel BUSY (5.0V) -> Backing off 16.00 ms
+[20:40:16.929] [WARN] [Station 03] Channel BUSY (5.0V) -> Backing off 52.00 ms
+[20:40:16.929] [WARN] [Station 02] Channel BUSY (5.0V) -> Backing off 16.00 ms
+[20:40:16.930] [WARN] [Station 06] Channel BUSY (5.0V) -> Backing off 60.00 ms
+[20:40:16.935] [COLL] [Station 01] Collided -> Uniform random backoff 8.00 ms (try 1)
+[20:40:16.935] [COLL] [Station 04] Collided -> Uniform random backoff 52.00 ms (try 1)
+[20:40:16.936] [COLL] [Station 09] Collided -> Uniform random backoff 60.00 ms (try 1)
+[20:40:16.936] [COLL] [Station 10] Collided -> Uniform random backoff 4.00 ms (try 1)
+[20:40:16.937] [COLL] [Station 05] Collided -> Uniform random backoff 40.00 ms (try 1)
+[20:40:16.941] [INFO] [Station 10] Transmitting frame #1 (attempt 2)
+[20:40:16.943] [WARN] [Station 01] Channel BUSY (1.0V) -> Backing off 24.00 ms
+[20:40:16.945] [WARN] [Station 07] Channel BUSY (1.0V) -> Backing off 60.00 ms
+[20:40:16.946] [WARN] [Station 02] Channel BUSY (1.0V) -> Backing off 44.00 ms
+[20:40:16.949] [SUCC] [Station 10] Frame #1 delivered successfully! (latency: 21.11 ms, throughput: 24.25 kbps)
+[20:40:16.951] [INFO] [Station 10] Transmitting frame #2 (attempt 1)
+[20:40:16.953] [WARN] [Station 08] Channel BUSY (1.0V) -> Backing off 28.00 ms
+[20:40:16.959] [SUCC] [Station 10] Frame #2 delivered successfully! (latency: 8.47 ms, throughput: 60.42 kbps)
+[20:40:16.962] [INFO] [Station 10] Transmitting frame #3 (attempt 1)
+[20:40:16.968] [WARN] [Station 01] Channel BUSY (1.0V) -> Backing off 8.00 ms
+[20:40:16.971] [SUCC] [Station 10] Frame #3 delivered successfully! (latency: 8.49 ms, throughput: 60.31 kbps)
+[20:40:16.973] [INFO] [Station 10] Transmitting frame #4 (attempt 1)
+[20:40:16.976] [WARN] [Station 01] Channel BUSY (1.0V) -> Backing off 32.00 ms
+[20:40:16.977] [WARN] [Station 05] Channel BUSY (1.0V) -> Backing off 8.00 ms
+[20:40:16.981] [WARN] [Station 03] Channel BUSY (1.0V) -> Backing off 36.00 ms
+[20:40:16.982] [SUCC] [Station 10] Frame #4 delivered successfully! (latency: 8.49 ms, throughput: 60.29 kbps)
+[20:40:16.982] [INFO] [Station 08] Transmitting frame #1 (attempt 1)
+[20:40:16.983] [COLL] [Station 10] Collision voltage spike: 2.0V on wire!
+[20:40:16.985] [WARN] [Station 05] Channel BUSY (2.0V) -> Backing off 36.00 ms
+[20:40:16.988] [WARN] [Station 04] Channel BUSY (2.0V) -> Backing off 56.00 ms
+[20:40:16.990] [COLL] [Station 08] Collided -> Uniform random backoff 32.00 ms (try 1)
+[20:40:16.990] [WARN] [Station 02] Channel BUSY (1.0V) -> Backing off 16.00 ms
+[20:40:16.990] [WARN] [Station 06] Channel BUSY (1.0V) -> Backing off 36.00 ms
+[20:40:16.991] [COLL] [Station 10] Collided -> Uniform random backoff 12.00 ms (try 1)
+[20:40:16.996] [INFO] [Station 09] Transmitting frame #1 (attempt 2)
+[20:40:17.004] [WARN] [Station 10] Channel BUSY (1.0V) -> Backing off 12.00 ms
+[20:40:17.005] [SUCC] [Station 09] Frame #1 delivered successfully! (latency: 77.40 ms, throughput: 6.62 kbps)
+[20:40:17.006] [INFO] [Station 07] Transmitting frame #1 (attempt 1)
+[20:40:17.007] [COLL] [Station 02] Collision voltage spike: 2.0V on wire!
+[20:40:17.008] [WARN] [Station 09] Channel BUSY (2.0V) -> Backing off 64.00 ms
+[20:40:17.009] [WARN] [Station 01] Channel BUSY (2.0V) -> Backing off 48.00 ms
+[20:40:17.014] [COLL] [Station 07] Collided -> Uniform random backoff 36.00 ms (try 1)
+[20:40:17.015] [COLL] [Station 02] Collided -> Uniform random backoff 60.00 ms (try 1)
+[20:40:17.016] [INFO] [Station 10] Transmitting frame #5 (attempt 2)
+[20:40:17.018] [COLL] [Station 03] Collision voltage spike: 2.0V on wire!
+[20:40:17.021] [WARN] [Station 05] Channel BUSY (2.0V) -> Backing off 44.00 ms
+[20:40:17.024] [WARN] [Station 08] Channel BUSY (2.0V) -> Backing off 12.00 ms
+[20:40:17.025] [COLL] [Station 10] Collided -> Uniform random backoff 36.00 ms (try 2)
+[20:40:17.026] [COLL] [Station 03] Collided -> Uniform random backoff 12.00 ms (try 1)
+[20:40:17.027] [INFO] [Station 06] Transmitting frame #1 (attempt 1)
+[20:40:17.035] [SUCC] [Station 06] Frame #1 delivered successfully! (latency: 105.36 ms, throughput: 4.86 kbps)
+[20:40:17.036] [INFO] [Station 08] Transmitting frame #1 (attempt 2)
+[20:40:17.037] [COLL] [Station 06] Collision voltage spike: 2.0V on wire!
+[20:40:17.038] [WARN] [Station 03] Channel BUSY (2.0V) -> Backing off 60.00 ms
+[20:40:17.044] [WARN] [Station 04] Channel BUSY (2.0V) -> Backing off 60.00 ms
+[20:40:17.045] [COLL] [Station 08] Collided -> Uniform random backoff 24.00 ms (try 2)
+[20:40:17.046] [COLL] [Station 06] Collided -> Uniform random backoff 24.00 ms (try 1)
+[20:40:17.051] [INFO] [Station 07] Transmitting frame #1 (attempt 2)
+[20:40:17.057] [WARN] [Station 01] Channel BUSY (1.0V) -> Backing off 32.00 ms
+[20:40:17.059] [SUCC] [Station 07] Frame #1 delivered successfully! (latency: 129.81 ms, throughput: 3.94 kbps)
+[20:40:17.062] [INFO] [Station 10] Transmitting frame #5 (attempt 3)
+[20:40:17.063] [COLL] [Station 07] Collision voltage spike: 2.0V on wire!
+[20:40:17.066] [WARN] [Station 05] Channel BUSY (2.0V) -> Backing off 28.00 ms
+[20:40:17.069] [WARN] [Station 08] Channel BUSY (2.0V) -> Backing off 40.00 ms
+[20:40:17.070] [WARN] [Station 06] Channel BUSY (2.0V) -> Backing off 64.00 ms
+[20:40:17.070] [COLL] [Station 10] Collided -> Uniform random backoff 64.00 ms (try 3)
+[20:40:17.071] [COLL] [Station 07] Collided -> Uniform random backoff 16.00 ms (try 1)
+[20:40:17.073] [INFO] [Station 09] Transmitting frame #2 (attempt 1)
+[20:40:17.076] [WARN] [Station 02] Channel BUSY (1.0V) -> Backing off 32.00 ms
+[20:40:17.081] [SUCC] [Station 09] Frame #2 delivered successfully! (latency: 72.81 ms, throughput: 7.03 kbps)
+[20:40:17.083] [INFO] [Station 09] Transmitting frame #3 (attempt 1)
+[20:40:17.088] [WARN] [Station 07] Channel BUSY (1.0V) -> Backing off 40.00 ms
+[20:40:17.089] [WARN] [Station 01] Channel BUSY (1.0V) -> Backing off 12.00 ms
+[20:40:17.091] [SUCC] [Station 09] Frame #3 delivered successfully! (latency: 8.48 ms, throughput: 60.41 kbps)
+[20:40:17.093] [INFO] [Station 09] Transmitting frame #4 (attempt 1)
+[20:40:17.095] [COLL] [Station 05] Collision voltage spike: 2.0V on wire!
+[20:40:17.099] [WARN] [Station 03] Channel BUSY (2.0V) -> Backing off 40.00 ms
+[20:40:17.101] [COLL] [Station 09] Collided -> Uniform random backoff 60.00 ms (try 1)
+[20:40:17.102] [WARN] [Station 01] Channel BUSY (1.0V) -> Backing off 32.00 ms
+[20:40:17.103] [COLL] [Station 05] Collided -> Uniform random backoff 36.00 ms (try 2)
+[20:40:17.104] [INFO] [Station 04] Transmitting frame #1 (attempt 2)
+[20:40:17.109] [WARN] [Station 02] Channel BUSY (1.0V) -> Backing off 16.00 ms
+[20:40:17.109] [WARN] [Station 08] Channel BUSY (1.0V) -> Backing off 48.00 ms
+[20:40:17.113] [SUCC] [Station 04] Frame #1 delivered successfully! (latency: 185.96 ms, throughput: 2.75 kbps)
+[20:40:17.115] [INFO] [Station 04] Transmitting frame #2 (attempt 1)
+[20:40:17.123] [SUCC] [Station 04] Frame #2 delivered successfully! (latency: 8.49 ms, throughput: 60.29 kbps)
+[20:40:17.125] [INFO] [Station 02] Transmitting frame #1 (attempt 2)
+[20:40:17.126] [COLL] [Station 04] Collision voltage spike: 2.0V on wire!
+[20:40:17.128] [WARN] [Station 07] Channel BUSY (2.0V) -> Backing off 44.00 ms
+[20:40:17.134] [COLL] [Station 02] Collided -> Uniform random backoff 8.00 ms (try 2)
+[20:40:17.134] [WARN] [Station 01] Channel BUSY (1.0V) -> Backing off 32.00 ms
+[20:40:17.134] [WARN] [Station 06] Channel BUSY (1.0V) -> Backing off 8.00 ms
+[20:40:17.134] [WARN] [Station 10] Channel BUSY (1.0V) -> Backing off 56.00 ms
+[20:40:17.134] [COLL] [Station 04] Collided -> Uniform random backoff 20.00 ms (try 1)
+[20:40:17.139] [INFO] [Station 03] Transmitting frame #1 (attempt 2)
+[20:40:17.139] [COLL] [Station 05] Collision voltage spike: 2.0V on wire!
+[20:40:17.142] [WARN] [Station 02] Channel BUSY (2.0V) -> Backing off 56.00 ms
+[20:40:17.143] [WARN] [Station 06] Channel BUSY (2.0V) -> Backing off 24.00 ms
+[20:40:17.148] [COLL] [Station 03] Collided -> Uniform random backoff 32.00 ms (try 2)
+[20:40:17.148] [COLL] [Station 05] Collided -> Uniform random backoff 8.00 ms (try 3)
+[20:40:17.155] [INFO] [Station 04] Transmitting frame #3 (attempt 2)
+[20:40:17.156] [COLL] [Station 05] Collision voltage spike: 2.0V on wire!
+[20:40:17.158] [WARN] [Station 08] Channel BUSY (2.0V) -> Backing off 44.00 ms
+[20:40:17.162] [WARN] [Station 09] Channel BUSY (2.0V) -> Backing off 52.00 ms
+[20:40:17.163] [COLL] [Station 04] Collided -> Uniform random backoff 52.00 ms (try 2)
+[20:40:17.165] [COLL] [Station 05] Collided -> Uniform random backoff 60.00 ms (try 4)
+[20:40:17.166] [INFO] [Station 01] Transmitting frame #1 (attempt 2)
+[20:40:17.167] [COLL] [Station 06] Collision voltage spike: 2.0V on wire!
+[20:40:17.172] [WARN] [Station 07] Channel BUSY (2.0V) -> Backing off 8.00 ms
+[20:40:17.175] [COLL] [Station 01] Collided -> Uniform random backoff 32.00 ms (try 2)
+[20:40:17.176] [COLL] [Station 06] Collided -> Uniform random backoff 28.00 ms (try 2)
+[20:40:17.180] [INFO] [Station 03] Transmitting frame #1 (attempt 3)
+[20:40:17.181] [COLL] [Station 07] Collision voltage spike: 2.0V on wire!
+[20:40:17.189] [COLL] [Station 03] Collided -> Uniform random backoff 48.00 ms (try 3)
+[20:40:17.189] [COLL] [Station 07] Collided -> Uniform random backoff 20.00 ms (try 2)
+[20:40:17.191] [INFO] [Station 10] Transmitting frame #5 (attempt 4)
+[20:40:17.199] [WARN] [Station 02] Channel BUSY (1.0V) -> Backing off 8.00 ms
+[20:40:17.199] [SUCC] [Station 10] Frame #5 delivered successfully! (latency: 216.29 ms, throughput: 2.37 kbps)
+[20:40:17.203] [INFO] [Station 08] Transmitting frame #1 (attempt 3)
+[20:40:17.204] [COLL] [Station 06] Collision voltage spike: 2.0V on wire!
+[20:40:17.207] [WARN] [Station 02] Channel BUSY (2.0V) -> Backing off 40.00 ms
+[20:40:17.208] [WARN] [Station 01] Channel BUSY (2.0V) -> Backing off 36.00 ms
+[20:40:17.209] [WARN] [Station 07] Channel BUSY (2.0V) -> Backing off 12.00 ms
+[20:40:17.212] [COLL] [Station 08] Collided -> Uniform random backoff 60.00 ms (try 3)
+[20:40:17.213] [COLL] [Station 06] Collided -> Uniform random backoff 24.00 ms (try 3)
+[20:40:17.214] [INFO] [Station 09] Transmitting frame #4 (attempt 2)
+[20:40:17.215] [COLL] [Station 04] Collision voltage spike: 2.0V on wire!
+[20:40:17.222] [WARN] [Station 07] Channel BUSY (2.0V) -> Backing off 20.00 ms
+[20:40:17.223] [COLL] [Station 09] Collided -> Uniform random backoff 36.00 ms (try 2)
+[20:40:17.224] [COLL] [Station 04] Collided -> Uniform random backoff 24.00 ms (try 3)
+[20:40:17.225] [INFO] [Station 05] Transmitting frame #1 (attempt 5)
+[20:40:17.234] [SUCC] [Station 05] Frame #1 delivered successfully! (latency: 305.67 ms, throughput: 1.68 kbps)
+[20:40:17.236] [INFO] [Station 05] Transmitting frame #2 (attempt 1)
+[20:40:17.237] [COLL] [Station 03] Collision voltage spike: 2.0V on wire!
+[20:40:17.237] [COLL] [Station 06] Collision voltage spike: 3.0V on wire!
+[20:40:17.242] [WARN] [Station 07] Channel BUSY (3.0V) -> Backing off 28.00 ms
+[20:40:17.244] [COLL] [Station 05] Collided -> Uniform random backoff 56.00 ms (try 1)
+[20:40:17.244] [WARN] [Station 01] Channel BUSY (3.0V) -> Backing off 60.00 ms
+[20:40:17.245] [COLL] [Station 03] Collided -> Uniform random backoff 40.00 ms (try 4)
+[20:40:17.246] [COLL] [Station 06] Collided -> Uniform random backoff 24.00 ms (try 4)
+[20:40:17.248] [INFO] [Station 02] Transmitting frame #1 (attempt 3)
+[20:40:17.248] [COLL] [Station 04] Collision voltage spike: 2.0V on wire!
+[20:40:17.256] [COLL] [Station 02] Collided -> Uniform random backoff 44.00 ms (try 3)
+[20:40:17.256] [COLL] [Station 04] Collided -> Uniform random backoff 40.00 ms (try 4)
+[20:40:17.259] [INFO] [Station 09] Transmitting frame #4 (attempt 3)
+[20:40:17.268] [SUCC] [Station 09] Frame #4 delivered successfully! (latency: 174.34 ms, throughput: 2.94 kbps)
+[20:40:17.269] [INFO] [Station 09] Transmitting frame #5 (attempt 1)
+[20:40:17.270] [COLL] [Station 06] Collision voltage spike: 2.0V on wire!
+[20:40:17.270] [COLL] [Station 07] Collision voltage spike: 3.0V on wire!
+[20:40:17.273] [WARN] [Station 08] Channel BUSY (3.0V) -> Backing off 32.00 ms
+[20:40:17.277] [COLL] [Station 09] Collided -> Uniform random backoff 60.00 ms (try 1)
+[20:40:17.278] [COLL] [Station 06] Collided -> Uniform random backoff 48.00 ms (try 5)
+[20:40:17.279] [COLL] [Station 07] Collided -> Uniform random backoff 24.00 ms (try 3)
+[20:40:17.286] [INFO] [Station 03] Transmitting frame #1 (attempt 5)
+[20:40:17.295] [SUCC] [Station 03] Frame #1 delivered successfully! (latency: 365.57 ms, throughput: 1.40 kbps)
+[20:40:17.297] [INFO] [Station 04] Transmitting frame #3 (attempt 5)
+[20:40:17.298] [COLL] [Station 03] Collision voltage spike: 2.0V on wire!
+[20:40:17.301] [WARN] [Station 05] Channel BUSY (2.0V) -> Backing off 48.00 ms
+[20:40:17.302] [WARN] [Station 02] Channel BUSY (2.0V) -> Backing off 40.00 ms
+[20:40:17.303] [WARN] [Station 07] Channel BUSY (2.0V) -> Backing off 8.00 ms
+[20:40:17.305] [WARN] [Station 01] Channel BUSY (2.0V) -> Backing off 40.00 ms
+[20:40:17.305] [WARN] [Station 08] Channel BUSY (2.0V) -> Backing off 64.00 ms
+[20:40:17.305] [COLL] [Station 04] Collided -> Uniform random backoff 52.00 ms (try 5)
+[20:40:17.306] [COLL] [Station 03] Collided -> Uniform random backoff 32.00 ms (try 1)
+[20:40:17.312] [INFO] [Station 07] Transmitting frame #2 (attempt 4)
+[20:40:17.320] [SUCC] [Station 07] Frame #2 delivered successfully! (latency: 256.95 ms, throughput: 1.99 kbps)
+[20:40:17.324] [INFO] [Station 07] Transmitting frame #3 (attempt 1)
+[20:40:17.327] [WARN] [Station 06] Channel BUSY (1.0V) -> Backing off 44.00 ms
+[20:40:17.333] [SUCC] [Station 07] Frame #3 delivered successfully! (latency: 8.48 ms, throughput: 60.37 kbps)
+[20:40:17.335] [INFO] [Station 07] Transmitting frame #4 (attempt 1)
+[20:40:17.338] [WARN] [Station 09] Channel BUSY (1.0V) -> Backing off 12.00 ms
+[20:40:17.339] [WARN] [Station 03] Channel BUSY (1.0V) -> Backing off 16.00 ms
+[20:40:17.343] [SUCC] [Station 07] Frame #4 delivered successfully! (latency: 8.40 ms, throughput: 60.95 kbps)
+[20:40:17.344] [INFO] [Station 02] Transmitting frame #1 (attempt 4)
+[20:40:17.345] [COLL] [Station 07] Collision voltage spike: 2.0V on wire!
+[20:40:17.345] [COLL] [Station 01] Collision voltage spike: 3.0V on wire!
+[20:40:17.350] [WARN] [Station 05] Channel BUSY (3.0V) -> Backing off 64.00 ms
+[20:40:17.350] [WARN] [Station 09] Channel BUSY (3.0V) -> Backing off 40.00 ms
+[20:40:17.352] [COLL] [Station 02] Collided -> Uniform random backoff 60.00 ms (try 4)
+[20:40:17.353] [COLL] [Station 07] Collided -> Uniform random backoff 24.00 ms (try 1)
+[20:40:17.353] [COLL] [Station 01] Collided -> Uniform random backoff 60.00 ms (try 3)
+[20:40:17.355] [INFO] [Station 03] Transmitting frame #2 (attempt 2)
+[20:40:17.357] [WARN] [Station 04] Channel BUSY (1.0V) -> Backing off 24.00 ms
+[20:40:17.363] [SUCC] [Station 03] Frame #2 delivered successfully! (latency: 65.42 ms, throughput: 7.83 kbps)
+[20:40:17.366] [INFO] [Station 03] Transmitting frame #3 (attempt 1)
+[20:40:17.369] [WARN] [Station 08] Channel BUSY (1.0V) -> Backing off 12.00 ms
+[20:40:17.371] [WARN] [Station 06] Channel BUSY (1.0V) -> Backing off 60.00 ms
+[20:40:17.374] [SUCC] [Station 03] Frame #3 delivered successfully! (latency: 8.35 ms, throughput: 61.28 kbps)
+[20:40:17.377] [INFO] [Station 03] Transmitting frame #4 (attempt 1)
+[20:40:17.377] [COLL] [Station 07] Collision voltage spike: 2.0V on wire!
+[20:40:17.382] [WARN] [Station 08] Channel BUSY (2.0V) -> Backing off 64.00 ms
+[20:40:17.382] [WARN] [Station 04] Channel BUSY (2.0V) -> Backing off 24.00 ms
+[20:40:17.386] [COLL] [Station 03] Collided -> Uniform random backoff 28.00 ms (try 1)
+[20:40:17.386] [COLL] [Station 07] Collided -> Uniform random backoff 12.00 ms (try 2)
+[20:40:17.390] [INFO] [Station 09] Transmitting frame #5 (attempt 2)
+[20:40:17.398] [WARN] [Station 07] Channel BUSY (1.0V) -> Backing off 64.00 ms
+[20:40:17.399] [SUCC] [Station 09] Frame #5 delivered successfully! (latency: 129.93 ms, throughput: 3.94 kbps)
+[20:40:17.406] [INFO] [Station 04] Transmitting frame #3 (attempt 6)
+[20:40:17.414] [WARN] [Station 01] Channel BUSY (1.0V) -> Backing off 32.00 ms
+[20:40:17.414] [WARN] [Station 03] Channel BUSY (1.0V) -> Backing off 12.00 ms
+[20:40:17.414] [WARN] [Station 05] Channel BUSY (1.0V) -> Backing off 48.00 ms
+[20:40:17.414] [SUCC] [Station 04] Frame #3 delivered successfully! (latency: 288.17 ms, throughput: 1.78 kbps)
+[20:40:17.415] [INFO] [Station 02] Transmitting frame #1 (attempt 5)
+[20:40:17.416] [COLL] [Station 04] Collision voltage spike: 2.0V on wire!
+[20:40:17.423] [COLL] [Station 02] Collided -> Uniform random backoff 60.00 ms (try 5)
+[20:40:17.424] [COLL] [Station 04] Collided -> Uniform random backoff 4.00 ms (try 1)
+[20:40:17.426] [INFO] [Station 03] Transmitting frame #4 (attempt 2)
+[20:40:17.428] [WARN] [Station 04] Channel BUSY (1.0V) -> Backing off 52.00 ms
+[20:40:17.431] [WARN] [Station 06] Channel BUSY (1.0V) -> Backing off 32.00 ms
+[20:40:17.434] [SUCC] [Station 03] Frame #4 delivered successfully! (latency: 57.40 ms, throughput: 8.92 kbps)
+[20:40:17.438] [INFO] [Station 03] Transmitting frame #5 (attempt 1)
+[20:40:17.446] [SUCC] [Station 03] Frame #5 delivered successfully! (latency: 8.49 ms, throughput: 60.32 kbps)
+[20:40:17.446] [INFO] [Station 08] Transmitting frame #1 (attempt 4)
+[20:40:17.447] [COLL] [Station 01] Collision voltage spike: 2.0V on wire!
+[20:40:17.455] [COLL] [Station 08] Collided -> Uniform random backoff 20.00 ms (try 4)
+[20:40:17.455] [COLL] [Station 01] Collided -> Uniform random backoff 40.00 ms (try 4)
+[20:40:17.463] [INFO] [Station 05] Transmitting frame #2 (attempt 2)
+[20:40:17.463] [COLL] [Station 07] Collision voltage spike: 2.0V on wire!
+[20:40:17.464] [COLL] [Station 06] Collision voltage spike: 3.0V on wire!
+[20:40:17.471] [COLL] [Station 07] Collided -> Uniform random backoff 4.00 ms (try 3)
+[20:40:17.471] [COLL] [Station 05] Collided -> Uniform random backoff 4.00 ms (try 2)
+[20:40:17.472] [COLL] [Station 06] Collided -> Uniform random backoff 64.00 ms (try 6)
+[20:40:17.475] [INFO] [Station 08] Transmitting frame #1 (attempt 5)
+[20:40:17.476] [COLL] [Station 05] Collision voltage spike: 2.0V on wire!
+[20:40:17.476] [COLL] [Station 07] Collision voltage spike: 3.0V on wire!
+[20:40:17.481] [WARN] [Station 04] Channel BUSY (3.0V) -> Backing off 48.00 ms
+[20:40:17.484] [COLL] [Station 08] Collided -> Uniform random backoff 16.00 ms (try 5)
+[20:40:17.484] [COLL] [Station 05] Collided -> Uniform random backoff 32.00 ms (try 3)
+[20:40:17.484] [COLL] [Station 07] Collided -> Uniform random backoff 56.00 ms (try 4)
+[20:40:17.486] [INFO] [Station 02] Transmitting frame #1 (attempt 6)
+[20:40:17.494] [SUCC] [Station 02] Frame #1 delivered successfully! (latency: 565.04 ms, throughput: 0.91 kbps)
+[20:40:17.496] [INFO] [Station 02] Transmitting frame #2 (attempt 1)
+[20:40:17.496] [COLL] [Station 01] Collision voltage spike: 2.0V on wire!
+[20:40:17.500] [WARN] [Station 08] Channel BUSY (2.0V) -> Backing off 24.00 ms
+[20:40:17.505] [COLL] [Station 02] Collided -> Uniform random backoff 48.00 ms (try 1)
+[20:40:17.505] [COLL] [Station 01] Collided -> Uniform random backoff 40.00 ms (try 5)
+[20:40:17.517] [INFO] [Station 05] Transmitting frame #2 (attempt 4)
+[20:40:17.525] [WARN] [Station 08] Channel BUSY (1.0V) -> Backing off 16.00 ms
+[20:40:17.525] [SUCC] [Station 05] Frame #2 delivered successfully! (latency: 289.69 ms, throughput: 1.77 kbps)
+[20:40:17.529] [INFO] [Station 05] Transmitting frame #3 (attempt 1)
+[20:40:17.530] [COLL] [Station 04] Collision voltage spike: 2.0V on wire!
+[20:40:17.536] [WARN] [Station 06] Channel BUSY (2.0V) -> Backing off 16.00 ms
+[20:40:17.538] [COLL] [Station 05] Collided -> Uniform random backoff 40.00 ms (try 1)
+[20:40:17.538] [COLL] [Station 04] Collided -> Uniform random backoff 48.00 ms (try 2)
+[20:40:17.541] [INFO] [Station 07] Transmitting frame #5 (attempt 5)
+[20:40:17.541] [COLL] [Station 08] Collision voltage spike: 2.0V on wire!
+[20:40:17.545] [WARN] [Station 01] Channel BUSY (2.0V) -> Backing off 16.00 ms
+[20:40:17.549] [COLL] [Station 07] Collided -> Uniform random backoff 44.00 ms (try 5)
+[20:40:17.550] [COLL] [Station 08] Collided -> Uniform random backoff 20.00 ms (try 6)
+[20:40:17.553] [INFO] [Station 06] Transmitting frame #2 (attempt 7)
+[20:40:17.554] [COLL] [Station 02] Collision voltage spike: 2.0V on wire!
+[20:40:17.561] [COLL] [Station 06] Collided -> Uniform random backoff 12.00 ms (try 7)
+[20:40:17.562] [WARN] [Station 01] Channel BUSY (1.0V) -> Backing off 20.00 ms
+[20:40:17.563] [COLL] [Station 02] Collided -> Uniform random backoff 32.00 ms (try 2)
+[20:40:17.570] [INFO] [Station 08] Transmitting frame #1 (attempt 7)
+[20:40:17.574] [WARN] [Station 06] Channel BUSY (1.0V) -> Backing off 36.00 ms
+[20:40:17.578] [WARN] [Station 05] Channel BUSY (1.0V) -> Backing off 12.00 ms
+[20:40:17.579] [SUCC] [Station 08] Frame #1 delivered successfully! (latency: 650.06 ms, throughput: 0.79 kbps)
+[20:40:17.580] [INFO] [Station 08] Transmitting frame #2 (attempt 1)
+[20:40:17.582] [WARN] [Station 01] Channel BUSY (1.0V) -> Backing off 12.00 ms
+[20:40:17.587] [WARN] [Station 04] Channel BUSY (1.0V) -> Backing off 8.00 ms
+[20:40:17.589] [SUCC] [Station 08] Frame #2 delivered successfully! (latency: 8.50 ms, throughput: 60.23 kbps)
+[20:40:17.591] [INFO] [Station 05] Transmitting frame #3 (attempt 2)
+[20:40:17.593] [WARN] [Station 08] Channel BUSY (1.0V) -> Backing off 48.00 ms
+[20:40:17.593] [WARN] [Station 07] Channel BUSY (1.0V) -> Backing off 28.00 ms
+[20:40:17.595] [WARN] [Station 01] Channel BUSY (1.0V) -> Backing off 40.00 ms
+[20:40:17.595] [WARN] [Station 04] Channel BUSY (1.0V) -> Backing off 32.00 ms
+[20:40:17.596] [WARN] [Station 02] Channel BUSY (1.0V) -> Backing off 28.00 ms
+[20:40:17.599] [SUCC] [Station 05] Frame #3 delivered successfully! (latency: 70.03 ms, throughput: 7.31 kbps)
+[20:40:17.602] [INFO] [Station 05] Transmitting frame #4 (attempt 1)
+[20:40:17.610] [SUCC] [Station 05] Frame #4 delivered successfully! (latency: 8.51 ms, throughput: 60.15 kbps)
+[20:40:17.611] [INFO] [Station 06] Transmitting frame #2 (attempt 8)
+[20:40:17.614] [WARN] [Station 05] Channel BUSY (1.0V) -> Backing off 56.00 ms
+[20:40:17.619] [SUCC] [Station 06] Frame #2 delivered successfully! (latency: 581.78 ms, throughput: 0.88 kbps)
+[20:40:17.621] [INFO] [Station 06] Transmitting frame #3 (attempt 1)
+[20:40:17.621] [COLL] [Station 07] Collision voltage spike: 2.0V on wire!
+[20:40:17.625] [WARN] [Station 02] Channel BUSY (2.0V) -> Backing off 8.00 ms
+[20:40:17.627] [WARN] [Station 04] Channel BUSY (2.0V) -> Backing off 32.00 ms
+[20:40:17.629] [COLL] [Station 06] Collided -> Uniform random backoff 56.00 ms (try 1)
+[20:40:17.630] [COLL] [Station 07] Collided -> Uniform random backoff 60.00 ms (try 6)
+[20:40:17.633] [INFO] [Station 02] Transmitting frame #2 (attempt 3)
+[20:40:17.635] [COLL] [Station 01] Collision voltage spike: 2.0V on wire!
+[20:40:17.642] [COLL] [Station 02] Collided -> Uniform random backoff 8.00 ms (try 3)
+[20:40:17.643] [WARN] [Station 08] Channel BUSY (1.0V) -> Backing off 44.00 ms
+[20:40:17.643] [COLL] [Station 01] Collided -> Uniform random backoff 40.00 ms (try 6)
+[20:40:17.651] [INFO] [Station 02] Transmitting frame #2 (attempt 4)
+[20:40:17.659] [SUCC] [Station 02] Frame #2 delivered successfully! (latency: 163.07 ms, throughput: 3.14 kbps)
+[20:40:17.661] [INFO] [Station 04] Transmitting frame #4 (attempt 3)
+[20:40:17.661] [COLL] [Station 02] Collision voltage spike: 2.0V on wire!
+[20:40:17.669] [COLL] [Station 04] Collided -> Uniform random backoff 16.00 ms (try 3)
+[20:40:17.670] [COLL] [Station 02] Collided -> Uniform random backoff 60.00 ms (try 1)
+[20:40:17.670] [INFO] [Station 05] Transmitting frame #5 (attempt 1)
+[20:40:17.679] [SUCC] [Station 05] Frame #5 delivered successfully! (latency: 64.77 ms, throughput: 7.90 kbps)
+[20:40:17.684] [INFO] [Station 01] Transmitting frame #1 (attempt 7)
+[20:40:17.685] [COLL] [Station 06] Collision voltage spike: 2.0V on wire!
+[20:40:17.686] [COLL] [Station 04] Collision voltage spike: 3.0V on wire!
+[20:40:17.689] [WARN] [Station 08] Channel BUSY (3.0V) -> Backing off 52.00 ms
+[20:40:17.690] [WARN] [Station 07] Channel BUSY (3.0V) -> Backing off 24.00 ms
+[20:40:17.692] [COLL] [Station 01] Collided -> Uniform random backoff 28.00 ms (try 7)
+[20:40:17.694] [COLL] [Station 06] Collided -> Uniform random backoff 64.00 ms (try 2)
+[20:40:17.694] [COLL] [Station 04] Collided -> Uniform random backoff 32.00 ms (try 4)
+[20:40:17.714] [INFO] [Station 07] Transmitting frame #5 (attempt 7)
+[20:40:17.720] [WARN] [Station 01] Channel BUSY (1.0V) -> Backing off 32.00 ms
+[20:40:17.723] [SUCC] [Station 07] Frame #5 delivered successfully! (latency: 377.63 ms, throughput: 1.36 kbps)
+[20:40:17.727] [INFO] [Station 04] Transmitting frame #4 (attempt 5)
+[20:40:17.731] [WARN] [Station 02] Channel BUSY (1.0V) -> Backing off 60.00 ms
+[20:40:17.736] [SUCC] [Station 04] Frame #4 delivered successfully! (latency: 320.07 ms, throughput: 1.60 kbps)
+[20:40:17.740] [INFO] [Station 04] Transmitting frame #5 (attempt 1)
+[20:40:17.742] [COLL] [Station 08] Collision voltage spike: 2.0V on wire!
+[20:40:17.749] [COLL] [Station 04] Collided -> Uniform random backoff 12.00 ms (try 1)
+[20:40:17.750] [COLL] [Station 08] Collided -> Uniform random backoff 44.00 ms (try 1)
+[20:40:17.753] [INFO] [Station 01] Transmitting frame #1 (attempt 8)
+[20:40:17.758] [WARN] [Station 06] Channel BUSY (1.0V) -> Backing off 8.00 ms
+[20:40:17.761] [SUCC] [Station 01] Frame #1 delivered successfully! (latency: 834.75 ms, throughput: 0.61 kbps)
+[20:40:17.761] [INFO] [Station 04] Transmitting frame #5 (attempt 2)
+[20:40:17.763] [COLL] [Station 01] Collision voltage spike: 2.0V on wire!
+[20:40:17.767] [WARN] [Station 06] Channel BUSY (2.0V) -> Backing off 56.00 ms
+[20:40:17.770] [COLL] [Station 04] Collided -> Uniform random backoff 16.00 ms (try 2)
+[20:40:17.771] [COLL] [Station 01] Collided -> Uniform random backoff 48.00 ms (try 1)
+[20:40:17.787] [INFO] [Station 04] Transmitting frame #5 (attempt 3)
+[20:40:17.791] [WARN] [Station 02] Channel BUSY (1.0V) -> Backing off 12.00 ms
+[20:40:17.795] [SUCC] [Station 04] Frame #5 delivered successfully! (latency: 55.12 ms, throughput: 9.29 kbps)
+[20:40:17.796] [INFO] [Station 08] Transmitting frame #3 (attempt 2)
+[20:40:17.804] [WARN] [Station 02] Channel BUSY (1.0V) -> Backing off 8.00 ms
+[20:40:17.804] [SUCC] [Station 08] Frame #3 delivered successfully! (latency: 211.39 ms, throughput: 2.42 kbps)
+[20:40:17.806] [INFO] [Station 08] Transmitting frame #4 (attempt 1)
+[20:40:17.812] [WARN] [Station 02] Channel BUSY (1.0V) -> Backing off 60.00 ms
+[20:40:17.814] [SUCC] [Station 08] Frame #4 delivered successfully! (latency: 8.52 ms, throughput: 60.09 kbps)
+[20:40:17.818] [INFO] [Station 08] Transmitting frame #5 (attempt 1)
+[20:40:17.820] [COLL] [Station 01] Collision voltage spike: 2.0V on wire!
+[20:40:17.823] [WARN] [Station 06] Channel BUSY (2.0V) -> Backing off 20.00 ms
+[20:40:17.827] [COLL] [Station 08] Collided -> Uniform random backoff 56.00 ms (try 1)
+[20:40:17.828] [COLL] [Station 01] Collided -> Uniform random backoff 52.00 ms (try 2)
+[20:40:17.844] [INFO] [Station 06] Transmitting frame #3 (attempt 3)
+[20:40:17.853] [SUCC] [Station 06] Frame #3 delivered successfully! (latency: 232.17 ms, throughput: 2.21 kbps)
+[20:40:17.856] [INFO] [Station 06] Transmitting frame #4 (attempt 1)
+[20:40:17.865] [SUCC] [Station 06] Frame #4 delivered successfully! (latency: 8.56 ms, throughput: 59.81 kbps)
+[20:40:17.866] [INFO] [Station 06] Transmitting frame #5 (attempt 1)
+[20:40:17.872] [WARN] [Station 02] Channel BUSY (1.0V) -> Backing off 48.00 ms
+[20:40:17.875] [SUCC] [Station 06] Frame #5 delivered successfully! (latency: 8.61 ms, throughput: 59.50 kbps)
+[20:40:17.881] [INFO] [Station 01] Transmitting frame #2 (attempt 3)
+[20:40:17.884] [WARN] [Station 08] Channel BUSY (1.0V) -> Backing off 24.00 ms
+[20:40:17.889] [SUCC] [Station 01] Frame #2 delivered successfully! (latency: 126.03 ms, throughput: 4.06 kbps)
+[20:40:17.891] [INFO] [Station 01] Transmitting frame #3 (attempt 1)
+[20:40:17.899] [SUCC] [Station 01] Frame #3 delivered successfully! (latency: 8.23 ms, throughput: 62.24 kbps)
+[20:40:17.901] [INFO] [Station 01] Transmitting frame #4 (attempt 1)
+[20:40:17.908] [WARN] [Station 08] Channel BUSY (1.0V) -> Backing off 16.00 ms
+[20:40:17.909] [SUCC] [Station 01] Frame #4 delivered successfully! (latency: 8.20 ms, throughput: 62.43 kbps)
+[20:40:17.912] [INFO] [Station 01] Transmitting frame #5 (attempt 1)
+[20:40:17.920] [SUCC] [Station 01] Frame #5 delivered successfully! (latency: 8.37 ms, throughput: 61.15 kbps)
+[20:40:17.921] [INFO] [Station 02] Transmitting frame #3 (attempt 2)
+[20:40:17.925] [WARN] [Station 08] Channel BUSY (1.0V) -> Backing off 60.00 ms
+[20:40:17.929] [SUCC] [Station 02] Frame #3 delivered successfully! (latency: 268.01 ms, throughput: 1.91 kbps)
+[20:40:17.931] [INFO] [Station 02] Transmitting frame #4 (attempt 1)
+[20:40:17.940] [SUCC] [Station 02] Frame #4 delivered successfully! (latency: 8.31 ms, throughput: 61.61 kbps)
+[20:40:17.941] [INFO] [Station 02] Transmitting frame #5 (attempt 1)
+[20:40:17.949] [SUCC] [Station 02] Frame #5 delivered successfully! (latency: 8.22 ms, throughput: 62.26 kbps)
+[20:40:17.986] [INFO] [Station 08] Transmitting frame #5 (attempt 2)
+[20:40:17.995] [SUCC] [Station 08] Frame #5 delivered successfully! (latency: 176.54 ms, throughput: 2.90 kbps)
+
+====================================================================================================
+PER-STATION THREAD PERFORMANCE BREAKDOWN
+----------------------------------------------------------------------------------------------------
+Station    | Tries   | Success | Collisions | Throughput (bps) | Avg Delay (ms) | Backoff (ms)  
+----------------------------------------------------------------------------------------------------
+Station 01 | 31      | 5       | 9          |      2383.70 bps | 197.12         | 856.00        
+Station 02 | 30      | 5       | 9          |      2383.70 bps | 202.53         | 872.00        
+Station 03 | 17      | 5       | 6          |      2383.70 bps | 101.05         | 408.00        
+Station 04 | 26      | 5       | 12         |      2383.70 bps | 171.56         | 704.00        
+Station 05 | 22      | 5       | 8          |      2383.70 bps | 147.73         | 620.00        
+Station 06 | 27      | 5       | 9          |      2383.70 bps | 187.30         | 808.00        
+Station 07 | 27      | 5       | 10         |      2383.70 bps | 156.26         | 648.00        
+Station 08 | 31      | 5       | 8          |      2383.70 bps | 211.00         | 924.00        
+Station 09 | 13      | 5       | 4          |      2383.70 bps | 92.59          | 384.00        
+Station 10 | 11      | 5       | 4          |      2383.70 bps | 52.57          | 184.00        
+==========================================================================
+GLOBAL SIMULATION PERFORMANCE SUMMARY
+--------------------------------------------------------------------------
+Elapsed Simulation Time    : 1.074 seconds
+Total Frame Attempts       : 129
+Total Frames Delivered     : 50
+Total Collisions Detected  : 44
+Total 32-bit Jam Signals   : 0
+Throughput Delivered       : 23837.04 bps (23.84 kbps)
+Channel Physical Capacity  : 64000.00 bps (64.00 kbps)
+Channel Access Efficiency  : 37.25%
+Delivery Success Ratio     : 100.0%
+==========================================================================
+

@@ -82,7 +82,7 @@ def chart_1_p_persistent_throughput():
     if not csv_file.exists(): return
     data = load_csv(csv_file)
 
-    fig, ax = plt.subplots(figsize=(11, 5.2), dpi=300)
+    fig, ax = plt.subplots(figsize=(11, 5.4), dpi=300)
 
     n_colors = {3: '#0275D8', 5: '#D9534F', 10: '#28A745'}
     n_markers = {3: 'o', 5: 's', 10: '^'}
@@ -92,22 +92,30 @@ def chart_1_p_persistent_throughput():
         ps = [r['p'] for r in sub]
         tps = [r['throughput'] for r in sub]
 
+        # Plot empirical curve
         ax.plot(ps, tps, marker=n_markers[N], markersize=7,
-                linewidth=2.2, color=n_colors[N], label=f'N = {N} Contending Stations')
+                linewidth=2.4, color=n_colors[N], label=f'N = {N} Empirical Curve')
 
         # Highlight optimal theoretical peak p* = 1/N
         opt_p = 1.0 / N
-        ax.axvline(x=opt_p, color=n_colors[N], linestyle=':', alpha=0.6,
+        ax.axvline(x=opt_p, color=n_colors[N], linestyle='--', alpha=0.75, linewidth=1.8,
                    label=f'Optimal $p^* = 1/{N} = {opt_p:.2f}$')
 
-    ax.set_title(r'p-Persistent CSMA: Channel Throughput $S$ vs. Persistence Factor $p$',
-                 fontsize=13, fontweight='bold', pad=12)
+        # Find peak empirical point and annotate
+        peak_idx = max(range(len(tps)), key=lambda i: tps[i])
+        peak_p = ps[peak_idx]
+        peak_tp = tps[peak_idx]
+        ax.plot([peak_p], [peak_tp], marker='*', markersize=14, color=n_colors[N],
+                markeredgecolor='black', markeredgewidth=1.2, zorder=5)
+
+    ax.set_title(r'p-Persistent CSMA: Channel Throughput $S$ vs. Persistence Factor $p$ ($N \in \{3, 5, 10\}$, 500 Frames/Station)',
+                 fontsize=12, fontweight='bold', pad=12)
     ax.set_xlabel(r'Persistence Transmission Probability ($p$)', fontsize=11, fontweight='bold')
     ax.set_ylabel(r'Channel Throughput $S$ (Fraction of Channel Time)', fontsize=11, fontweight='bold')
     ax.set_xlim(-0.02, 1.02)
-    ax.set_ylim(0.15, 0.95)
-    ax.grid(True)
-    ax.legend(frameon=True, framealpha=0.92, fontsize=9, loc='lower right')
+    ax.set_ylim(-0.03, 1.00)
+    ax.grid(True, linestyle='--', alpha=0.5)
+    ax.legend(frameon=True, framealpha=0.92, fontsize=8.5, loc='lower left', ncol=2)
 
     save_path = CHARTS_DIR / "1_p_persistent_throughput_vs_p.png"
     plt.savefig(save_path, dpi=300, bbox_inches='tight')
@@ -127,36 +135,43 @@ def chart_2_p_persistent_collisions_and_delay():
     n_colors = {3: '#0275D8', 5: '#D9534F', 10: '#28A745'}
     n_markers = {3: 'o', 5: 's', 10: '^'}
 
-    # Left: Collisions vs p
+    # Left: Collisions vs p (Log Scale to reveal monotonic escalation clearly)
     for N in [3, 5, 10]:
         sub = sorted([r for r in data if int(r['N']) == N], key=lambda x: x['p'])
         ps = [r['p'] for r in sub]
-        colls = [r['collisions'] for r in sub]
-        ax1.plot(ps, colls, marker=n_markers[N], markersize=7,
+        colls = [max(1.0, r['collisions']) for r in sub]
+        ax1.plot(ps, colls, marker=n_markers[N], markersize=6.5,
                  linewidth=2.0, color=n_colors[N], label=f'N = {N}')
 
+    ax1.set_yscale('log')
     ax1.set_title(r'(A) Total Collisions vs. Persistence Factor $p$', fontsize=12, fontweight='bold')
     ax1.set_xlabel(r'Persistence Probability ($p$)', fontsize=11, fontweight='bold')
-    ax1.set_ylabel('Total Collisions Observed', fontsize=11, fontweight='bold')
-    ax1.grid(True)
+    ax1.set_ylabel('Total Collisions Observed (Log Scale)', fontsize=11, fontweight='bold')
+    ax1.grid(True, which="both", linestyle='--', alpha=0.4)
     ax1.legend(frameon=True, fontsize=9.5)
 
-    # Right: Average Delay vs p
+    # Right: Average Delay vs p (Convex U-Curve with minimum at p* = 1/N)
     for N in [3, 5, 10]:
-        sub = sorted([r for r in data if int(r['N']) == N], key=lambda x: x['p'])
+        sub = sorted([r for r in data if int(r['N']) == N and r['throughput'] > 0.0], key=lambda x: x['p'])
         ps = [r['p'] for r in sub]
         delays = [r['avg_delay'] for r in sub]
-        ax2.plot(ps, delays, marker=n_markers[N], markersize=7,
+        ax2.plot(ps, delays, marker=n_markers[N], markersize=6.5,
                  linewidth=2.0, color=n_colors[N], label=f'N = {N}')
 
-    ax2.set_title(r'(B) Average Transmission Delay vs. Persistence Factor $p$', fontsize=12, fontweight='bold')
+        # Mark delay minimum
+        min_idx = min(range(len(delays)), key=lambda i: delays[i])
+        ax2.plot([ps[min_idx]], [delays[min_idx]], marker='*', markersize=13,
+                 color=n_colors[N], markeredgecolor='black', markeredgewidth=1.0, zorder=5)
+
+    ax2.set_yscale('log')
+    ax2.set_title(r'(B) Average Packet Latency vs. Persistence Factor $p$', fontsize=12, fontweight='bold')
     ax2.set_xlabel(r'Persistence Probability ($p$)', fontsize=11, fontweight='bold')
-    ax2.set_ylabel('Mean Packet Delay (Time Slots)', fontsize=11, fontweight='bold')
-    ax2.grid(True)
+    ax2.set_ylabel('Mean Packet Delay in Slots (Log Scale)', fontsize=11, fontweight='bold')
+    ax2.grid(True, which="both", linestyle='--', alpha=0.4)
     ax2.legend(frameon=True, fontsize=9.5)
 
-    plt.suptitle('p-Persistent CSMA: Contention Penalties Across Probability Spectrum',
-                 fontsize=14, fontweight='bold', y=1.02)
+    plt.suptitle('p-Persistent CSMA: Contention Penalties Across Probability Spectrum (N in {3, 5, 10}, 500 Frames/Station)',
+                 fontsize=13.5, fontweight='bold', y=1.02)
 
     save_path = CHARTS_DIR / "2_p_persistent_collisions_and_delay.png"
     plt.savefig(save_path, dpi=300, bbox_inches='tight')
@@ -173,7 +188,7 @@ def chart_3_stations_vs_throughput():
 
     fig, ax = plt.subplots(figsize=(11, 5.2), dpi=300)
 
-    for strat in ['csma_cd', 'p_persistent', 'non_persistent', 'csma_ca', 'one_persistent']:
+    for strat in ['csma_cd', 'p_persistent', 'non_persistent', 'one_persistent']:
         sub = sorted([r for r in data if r['strategy'] == strat], key=lambda x: x['N'])
         if not sub: continue
         ns = [r['N'] for r in sub]
@@ -181,12 +196,12 @@ def chart_3_stations_vs_throughput():
         ax.plot(ns, tps, marker=MARKERS[strat], markersize=8,
                 linewidth=2.4, color=COLORS[strat], label=LABELS[strat])
 
-    ax.set_title('Channel Throughput vs. Contending Network Stations (N)',
-                 fontsize=13, fontweight='bold', pad=12)
+    ax.set_title('Channel Throughput vs. Contending Network Stations (N = 1 to 35, 400 Frames/Station Saturated Load)',
+                 fontsize=12, fontweight='bold', pad=12)
     ax.set_xlabel('Number of Contending Stations (N)', fontsize=11, fontweight='bold')
     ax.set_ylabel('Saturated Channel Throughput (S)', fontsize=11, fontweight='bold')
     ax.set_xlim(0, 36)
-    ax.set_ylim(0.2, 0.98)
+    ax.set_ylim(0.0, 1.0)
     ax.grid(True)
     ax.legend(frameon=True, framealpha=0.92, fontsize=9.5, loc='upper right')
 
@@ -205,7 +220,7 @@ def chart_4_stations_vs_collisions():
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5.5), dpi=300)
 
-    for strat in ['one_persistent', 'csma_cd', 'non_persistent', 'p_persistent', 'csma_ca']:
+    for strat in ['one_persistent', 'csma_cd', 'non_persistent', 'p_persistent']:
         sub = sorted([r for r in data if r['strategy'] == strat], key=lambda x: x['N'])
         if not sub: continue
         ns = [r['N'] for r in sub]
@@ -229,8 +244,8 @@ def chart_4_stations_vs_collisions():
     ax2.grid(True)
     ax2.legend(frameon=True, fontsize=8.5)
 
-    plt.suptitle('Collision Scaling Under Intense Network Station Contention',
-                 fontsize=14, fontweight='bold', y=1.02)
+    plt.suptitle('Collision Scaling Under Intense Contention (N = 1 to 35 Stations, 400 Frames/Station)',
+                 fontsize=13.5, fontweight='bold', y=1.02)
 
     save_path = CHARTS_DIR / "4_stations_vs_collisions.png"
     plt.savefig(save_path, dpi=300, bbox_inches='tight')
@@ -247,7 +262,7 @@ def chart_5_stations_vs_delay():
 
     fig, ax = plt.subplots(figsize=(11, 5.2), dpi=300)
 
-    for strat in ['one_persistent', 'non_persistent', 'p_persistent', 'csma_ca', 'csma_cd']:
+    for strat in ['one_persistent', 'non_persistent', 'p_persistent', 'csma_cd']:
         sub = sorted([r for r in data if r['strategy'] == strat], key=lambda x: x['N'])
         if not sub: continue
         ns = [r['N'] for r in sub]
@@ -255,8 +270,8 @@ def chart_5_stations_vs_delay():
         ax.plot(ns, delays, marker=MARKERS[strat], markersize=8,
                 linewidth=2.2, color=COLORS[strat], label=LABELS[strat])
 
-    ax.set_title('Average Frame Transmission Delay vs. Station Contention (N)',
-                 fontsize=13, fontweight='bold', pad=12)
+    ax.set_title('Average Frame Transmission Delay vs. Station Contention (N = 1 to 35 Stations, 400 Frames/Station)',
+                 fontsize=12, fontweight='bold', pad=12)
     ax.set_xlabel('Number of Contending Stations (N)', fontsize=11, fontweight='bold')
     ax.set_ylabel('Mean Transmission Latency (Time Slots)', fontsize=11, fontweight='bold')
     ax.set_xlim(0, 36)
@@ -278,7 +293,7 @@ def chart_6_stations_vs_efficiency():
 
     fig, ax = plt.subplots(figsize=(11, 5.2), dpi=300)
 
-    for strat in ['csma_cd', 'p_persistent', 'non_persistent', 'csma_ca', 'one_persistent']:
+    for strat in ['csma_cd', 'p_persistent', 'non_persistent', 'one_persistent']:
         sub = sorted([r for r in data if r['strategy'] == strat], key=lambda x: x['N'])
         if not sub: continue
         ns = [r['N'] for r in sub]
@@ -286,12 +301,12 @@ def chart_6_stations_vs_efficiency():
         ax.plot(ns, effs, marker=MARKERS[strat], markersize=8,
                 linewidth=2.4, color=COLORS[strat], label=LABELS[strat])
 
-    ax.set_title(r'Channel Access Efficiency ($\eta = T_{useful} / T_{total}$) vs. Contending Stations (N)',
-                 fontsize=13, fontweight='bold', pad=12)
+    ax.set_title(r'Channel Access Efficiency ($\eta = T_{useful} / T_{total}$) vs. Contending Stations (N = 1 to 35, 400 Frames/Station)',
+                 fontsize=12, fontweight='bold', pad=12)
     ax.set_xlabel('Number of Contending Stations (N)', fontsize=11, fontweight='bold')
     ax.set_ylabel(r'Channel Efficiency $\eta$ (%)', fontsize=11, fontweight='bold')
     ax.set_xlim(0, 36)
-    ax.set_ylim(20, 100)
+    ax.set_ylim(0, 100)
     ax.yaxis.set_major_formatter(ticker.PercentFormatter())
     ax.grid(True)
     ax.legend(frameon=True, framealpha=0.92, fontsize=9.5, loc='upper right')
@@ -309,7 +324,7 @@ def chart_7_throughput_vs_offered_load():
     if not csv_file.exists(): return
     data = load_csv(csv_file)
 
-    fig, ax = plt.subplots(figsize=(11, 5.2), dpi=300)
+    fig, ax = plt.subplots(figsize=(11, 5.4), dpi=300)
 
     gs = [r['G'] for r in data]
     ax.plot(gs, [r['S_pure_aloha'] for r in data], '--', color='#6C757D', linewidth=2.0, label='Pure ALOHA ($S = G e^{-2G}$, Max 18.4%)')
@@ -318,18 +333,19 @@ def chart_7_throughput_vs_offered_load():
     ax.plot(gs, [r['S_non_persistent'] for r in data], '-', color=COLORS['non_persistent'], linewidth=2.2, label='Non-Persistent CSMA ($a=0.01$)')
     ax.plot(gs, [r['S_csma_cd'] for r in data], '-', color=COLORS['csma_cd'], linewidth=2.5, label='CSMA/CD (IEEE 802.3)')
 
-    ax.set_title('Classical MAC Performance: Throughput (S) vs. Offered Channel Traffic (G)',
-                 fontsize=13, fontweight='bold', pad=12)
+    ax.set_title('Classical MAC Performance: Throughput (S) vs. Offered Load (G) (Renewal Model, Poisson Frame Arrivals)',
+                 fontsize=12, fontweight='bold', pad=12)
     ax.set_xlabel('Offered Traffic Load (G: packets generated / frame time)', fontsize=11, fontweight='bold')
-    ax.set_ylabel('Saturated Channel Throughput (S: successful packets / frame time)', fontsize=11, fontweight='bold')
+    ax.set_ylabel(r'Channel Throughput $S$ (Fraction of Capacity)', fontsize=11, fontweight='bold')
     ax.set_xscale('log')
     ax.set_xlim(0.08, 12.0)
     ax.set_ylim(0.0, 1.0)
-    ax.grid(True, which='both')
+    ax.grid(True, which='both', linestyle='--', alpha=0.6)
     ax.legend(frameon=True, framealpha=0.92, fontsize=9.2, loc='upper left')
 
     save_path = CHARTS_DIR / "7_classic_throughput_vs_offered_load_g.png"
-    plt.savefig(save_path, dpi=300, bbox_inches='tight')
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=300, bbox_inches='tight', pad_inches=0.15)
     plt.close()
     print(f"  [SAVED] {save_path.name}")
 
@@ -350,10 +366,10 @@ def chart_8_csmacd_efficiency_vs_a():
     ax.plot(a_vals, theory, '--', color='#111111', linewidth=2.2,
             label=r'Theoretical: $\eta = \frac{1}{1 + 6.44a}$')
     ax.plot(a_vals, emp, 'o-', color=COLORS['csma_cd'], markersize=6,
-            linewidth=2.0, label='Empirical Simulation (N=10 Contending Stations)')
+            linewidth=2.0, label='Empirical Simulation (N=10 Contending Stations, 400 Frames/Station)')
 
-    ax.set_title(r'CSMA/CD Channel Efficiency ($\eta$) vs. Normalized Propagation Delay ($a = T_p / T_t$)',
-                 fontsize=13, fontweight='bold', pad=12)
+    ax.set_title(r'CSMA/CD Channel Efficiency ($\eta$) vs. Normalized Delay Ratio ($a = T_p / T_t$) (N = 10 Stations, 400 Frames/Station)',
+                 fontsize=12, fontweight='bold', pad=12)
     ax.set_xlabel(r'Normalized Propagation Delay Ratio $a = T_p / T_t$', fontsize=11, fontweight='bold')
     ax.set_ylabel(r'Channel Efficiency $\eta$ (%)', fontsize=11, fontweight='bold')
     ax.set_xscale('log')
@@ -362,175 +378,6 @@ def chart_8_csmacd_efficiency_vs_a():
     ax.legend(frameon=True, framealpha=0.92, fontsize=10, loc='lower left')
 
     save_path = CHARTS_DIR / "8_csmacd_efficiency_vs_propagation_delay_a.png"
-    plt.savefig(save_path, dpi=300, bbox_inches='tight')
-    plt.close()
-    print(f"  [SAVED] {save_path.name}")
-
-# ------------------------------------------------------------------------------
-# Chart 9: Backoff Dynamics & Fairness (BEB vs Linear vs MACAW MILD)
-# ------------------------------------------------------------------------------
-def chart_9_backoff_comparison():
-    csv_file = DATA_DIR / "backoff_comparison.csv"
-    if not csv_file.exists(): return
-    data = load_csv(csv_file)
-
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5.5), dpi=300)
-
-    b_colors = {
-        'IEEE 802.3 Truncated BEB': '#28A745',
-        'Linear Backoff':           '#D9534F',
-        'MACAW MILD (x1.5 / -1)':   '#0275D8'
-    }
-
-    schemes = ['IEEE 802.3 Truncated BEB', 'Linear Backoff', 'MACAW MILD (x1.5 / -1)']
-    for scheme in schemes:
-        sub = sorted([r for r in data if r['scheme'] == scheme], key=lambda x: x['N'])
-        ns = [r['N'] for r in sub]
-        retries = [r['avg_retries'] for r in sub]
-        fair = [r['jains_fairness'] for r in sub]
-
-        ax1.plot(ns, retries, marker='o', linewidth=2.0,
-                 color=b_colors.get(scheme, '#333333'), label=scheme)
-        ax2.plot(ns, fair, marker='s', linewidth=2.0,
-                 color=b_colors.get(scheme, '#333333'), label=scheme)
-
-    ax1.set_title('(A) Average Collision Retries per Packet', fontsize=12, fontweight='bold')
-    ax1.set_xlabel('Number of Contending Stations (N)', fontsize=11, fontweight='bold')
-    ax1.set_ylabel('Average Re-transmissions', fontsize=11, fontweight='bold')
-    ax1.grid(True)
-    ax1.legend(frameon=True, fontsize=9)
-
-    ax2.set_title('(B) Jain\'s Channel Access Fairness Index', fontsize=12, fontweight='bold')
-    ax2.set_xlabel('Number of Contending Stations (N)', fontsize=11, fontweight='bold')
-    ax2.set_ylabel('Jain\'s Fairness Index (0 to 1)', fontsize=11, fontweight='bold')
-    ax2.set_ylim(0.7, 1.02)
-    ax2.grid(True)
-    ax2.legend(frameon=True, fontsize=9)
-
-    plt.suptitle('Collision Resolution Dynamics: IEEE 802.3 Truncated BEB vs. Alternatives',
-                 fontsize=14, fontweight='bold', y=1.02)
-
-    save_path = CHARTS_DIR / "9_backoff_dynamics_and_fairness.png"
-    plt.savefig(save_path, dpi=300, bbox_inches='tight')
-    plt.close()
-    print(f"  [SAVED] {save_path.name}")
-
-# ------------------------------------------------------------------------------
-# Chart 10: Live C Multi-Process Empirical Socket Validation
-# ------------------------------------------------------------------------------
-def chart_10_live_c_validation():
-    csv_file = DATA_DIR / "live_c_benchmarks.csv"
-    if not csv_file.exists(): return
-    data = load_csv(csv_file)
-
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5.5), dpi=300)
-
-    strategies = ['non_persistent', 'one_persistent', 'p_persistent', 'csma_cd']
-    x = np.arange(len(strategies))
-    width = 0.35
-
-    d2 = {r['strategy']: r for r in data if int(r['stations']) == 2}
-    d4 = {r['strategy']: r for r in data if int(r['stations']) == 4}
-
-    eff2 = [d2[s]['efficiency'] * 100.0 if s in d2 else 0 for s in strategies]
-    eff4 = [d4[s]['efficiency'] * 100.0 if s in d4 else 0 for s in strategies]
-
-    ax1.bar(x - width/2, eff2, width, label='N = 2 Stations', color='#0275D8', alpha=0.85)
-    ax1.bar(x + width/2, eff4, width, label='N = 4 Stations', color='#D9534F', alpha=0.85)
-    ax1.set_title('(A) Channel Efficiency (%) in Live Socket Execution', fontsize=12, fontweight='bold')
-    ax1.set_xticks(x)
-    ax1.set_xticklabels(['Non-P', '1-P', 'p-P', 'CSMA/CD'], fontsize=10, fontweight='bold')
-    ax1.set_ylabel('Efficiency (%)', fontsize=11, fontweight='bold')
-    ax1.grid(True, axis='y')
-    ax1.legend(frameon=True)
-
-    coll2 = [d2[s]['collisions'] if s in d2 else 0 for s in strategies]
-    coll4 = [d4[s]['collisions'] if s in d4 else 0 for s in strategies]
-
-    ax2.bar(x - width/2, coll2, width, label='N = 2 Stations', color='#0275D8', alpha=0.85)
-    ax2.bar(x + width/2, coll4, width, label='N = 4 Stations', color='#D9534F', alpha=0.85)
-    ax2.set_title('(B) Observed Contention Collisions', fontsize=12, fontweight='bold')
-    ax2.set_xticks(x)
-    ax2.set_xticklabels(['Non-P', '1-P', 'p-P', 'CSMA/CD'], fontsize=10, fontweight='bold')
-    ax2.set_ylabel('Collision Count', fontsize=11, fontweight='bold')
-    ax2.grid(True, axis='y')
-    ax2.legend(frameon=True)
-
-    plt.suptitle('Live Multi-Process C Sockets: Channel Server & Stations Empirical Validation',
-                 fontsize=14, fontweight='bold', y=1.02)
-
-    save_path = CHARTS_DIR / "10_live_c_socket_validation.png"
-    plt.savefig(save_path, dpi=300, bbox_inches='tight')
-    plt.close()
-    print(f"  [SAVED] {save_path.name}")
-
-# ------------------------------------------------------------------------------
-# Chart 11: Master Performance Comparison Dashboard
-# ------------------------------------------------------------------------------
-def chart_11_master_dashboard():
-    csv_stations = DATA_DIR / "stations_contention_sweep.csv"
-    csv_p = DATA_DIR / "p_persistent_sweep.csv"
-    if not csv_stations.exists() or not csv_p.exists(): return
-
-    data_st = load_csv(csv_stations)
-    data_p = load_csv(csv_p)
-
-    fig, axes = plt.subplots(2, 2, figsize=(15, 11), dpi=300)
-
-    # (A) Throughput vs N
-    ax = axes[0, 0]
-    for strat in ['csma_cd', 'p_persistent', 'non_persistent', 'one_persistent']:
-        sub = sorted([r for r in data_st if r['strategy'] == strat], key=lambda x: x['N'])
-        ax.plot([r['N'] for r in sub], [r['throughput'] for r in sub],
-                marker=MARKERS[strat], color=COLORS[strat], linewidth=2.0, label=LABELS[strat])
-    ax.set_title('(A) Saturated Throughput vs. Contending Stations (N)', fontweight='bold')
-    ax.set_xlabel('Stations (N)', fontweight='bold')
-    ax.set_ylabel('Throughput (S)', fontweight='bold')
-    ax.grid(True)
-    ax.legend(fontsize=8, frameon=True)
-
-    # (B) Collisions vs N
-    ax = axes[0, 1]
-    for strat in ['csma_cd', 'p_persistent', 'non_persistent', 'one_persistent']:
-        sub = sorted([r for r in data_st if r['strategy'] == strat], key=lambda x: x['N'])
-        ax.plot([r['N'] for r in sub], [r['collisions'] for r in sub],
-                marker=MARKERS[strat], color=COLORS[strat], linewidth=2.0, label=LABELS[strat])
-    ax.set_title('(B) Collision Frequency vs. Contending Stations (N)', fontweight='bold')
-    ax.set_xlabel('Stations (N)', fontweight='bold')
-    ax.set_ylabel('Total Collisions', fontweight='bold')
-    ax.grid(True)
-    ax.legend(fontsize=8, frameon=True)
-
-    # (C) Delay vs N
-    ax = axes[1, 0]
-    for strat in ['csma_cd', 'p_persistent', 'non_persistent', 'one_persistent']:
-        sub = sorted([r for r in data_st if r['strategy'] == strat], key=lambda x: x['N'])
-        ax.plot([r['N'] for r in sub], [r['avg_delay'] for r in sub],
-                marker=MARKERS[strat], color=COLORS[strat], linewidth=2.0, label=LABELS[strat])
-    ax.set_title('(C) Mean Packet Delay vs. Contending Stations (N)', fontweight='bold')
-    ax.set_xlabel('Stations (N)', fontweight='bold')
-    ax.set_ylabel('Delay (Slots)', fontweight='bold')
-    ax.grid(True)
-    ax.legend(fontsize=8, frameon=True)
-
-    # (D) p-Persistent Throughput vs p
-    ax = axes[1, 1]
-    for N in [3, 5, 10]:
-        sub = sorted([r for r in data_p if int(r['N']) == N], key=lambda x: x['p'])
-        ax.plot([r['p'] for r in sub], [r['throughput'] for r in sub],
-                marker='o', linewidth=2.0, label=f'N = {N}')
-        ax.axvline(1.0/N, linestyle=':', alpha=0.5)
-    ax.set_title(r'(D) p-Persistent Throughput vs. $p$ ($p^* = 1/N$ peak)', fontweight='bold')
-    ax.set_xlabel(r'Probability $p$', fontweight='bold')
-    ax.set_ylabel('Throughput (S)', fontweight='bold')
-    ax.grid(True)
-    ax.legend(fontsize=8.5, frameon=True)
-
-    plt.suptitle('CSMA Medium Access Control Master Performance Comparison Dashboard',
-                 fontsize=15, fontweight='bold', y=0.995)
-    plt.tight_layout()
-
-    save_path = CHARTS_DIR / "11_master_csma_dashboard.png"
     plt.savefig(save_path, dpi=300, bbox_inches='tight')
     plt.close()
     print(f"  [SAVED] {save_path.name}")
@@ -545,12 +392,9 @@ def main():
     chart_4_stations_vs_collisions()
     chart_5_stations_vs_delay()
     chart_6_stations_vs_efficiency()
-    chart_7_throughput_vs_offered_load()
+    # chart_7_throughput_vs_offered_load() [Removed per user specification]
     chart_8_csmacd_efficiency_vs_a()
-    chart_9_backoff_comparison()
-    chart_10_live_c_validation()
-    chart_11_master_dashboard()
-    print(f"\n[+] All 11 visual charts successfully rendered in: {CHARTS_DIR}")
+    print(f"\n[+] Active visual charts successfully rendered in: {CHARTS_DIR}")
 
 if __name__ == "__main__":
     main()
