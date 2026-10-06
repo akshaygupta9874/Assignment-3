@@ -859,7 +859,7 @@ static MacStrategy select_strategy(void) {
     printf("  1) CSMA/CD (IEEE 802.3 Preemptive Collision Detection with BEB) [Default]\n");
     printf("  2) 1-Persistent CSMA\n");
     printf("  3) Non-Persistent CSMA\n");
-    printf("  4) p-Persistent CSMA (Slotted Contention)\n");
+    printf("  4) p-Persistent CSMA\n");
     int choice = get_input_int("Enter choice (1-4)", 1, 1, 4);
     switch (choice) {
         case 2:  return STRATEGY_1_PERSISTENT;

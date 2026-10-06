@@ -3,7 +3,6 @@
 """
 ==============================================================================
 run_high_scale_simulation.py
-CSE/PC/B/S/314 Computer Networks Lab - Assignment 3
 High-Scale Multi-Station MAC Contention Simulator, Chart Generator & Verifier
 
 Features:

@@ -1,0 +1,55 @@
+# ==============================================================================
+# .gitignore - CSE/PC/B/S/314 Computer Networks Lab (Assignment 3)
+# ==============================================================================
+
+# Byte-compiled / Optimized Python Caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.pytest_cache/
+
+# C / C++ Compilation Artifacts & Executables
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.a
+bin/*
+!bin/.gitkeep
+
+# Runtime Simulation Logs
+logs/*
+!logs/.gitkeep
+*.log
+
+# Python Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE / Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# OS-generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary Caches
+/tmp/matplotlib_cache/

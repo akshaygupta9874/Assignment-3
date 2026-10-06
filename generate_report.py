@@ -968,12 +968,15 @@ if (fp_csv) {
     # ==========================================================================
     story.append(Paragraph("20. Experiment 2 Continued: Latency & Channel Access Delay", style_h1))
     story.append(Paragraph(
-        "Packet delivery latency measures the average time elapsed from when a frame arrives at the MAC layer until it is "
-        "successfully received across the shared medium, benchmarking Quality of Service across <i>N = 1</i> to 35 stations with 400 frames per station:",
+        "<b>Definition of MAC Transmission Latency:</b> In shared contention networks, transmission latency (or packet delivery delay) "
+        "is the total elapsed time from when a frame arrives in a station's MAC queue until its final bit is successfully delivered across the bus: "
+        "<i>D = T<sub>queue</sub> + T<sub>defer</sub> + &sum;(T<sub>attempt</sub> + T<sub>backoff</sub>) + T<sub>t</sub> + T<sub>p</sub></i>. "
+        "It encompasses queue waiting, busy-line sensing deference, cumulative random backoff delays across repeated collision retries, "
+        "frame transmission serialization time (<i>T<sub>t</sub> = L/R</i>), and propagation delay (<i>T<sub>p</sub></i>), benchmarked across <i>N = 1</i> to 35 stations with 400 frames per station:",
         style_body
     ))
 
-    embed_chart("5_stations_vs_delay.png", max_width=485, max_height=265,
+    embed_chart("5_stations_vs_delay.png", max_width=485, max_height=175,
                 caption="Figure 20.1: Average Packet Transmission Latency (Time Slots) vs. Contending Network Stations N (N = 1 to 35 Stations, 400 Frames/Station)",
                 story=story, style_caption=style_caption)
 
@@ -984,8 +987,16 @@ if (fp_csv) {
         "<i>Why?</i> Every collision forces stations into backoff; upon waking, persistent sensing triggers immediate re-collision.<br/>"
         "• <b>CSMA/CD Latency Containment:</b> CSMA/CD bounds average delay to <b>21.9 slots at N=5, 66.7 slots at N=10, and 235.1 slots at N=35</b> "
         "(a <b>93.5% latency reduction</b> relative to Non-Persistent's 3,637.4 slots and p-Persistent's 594.9 slots). "
-        "<i>Why?</i> Truncating damaged frames in <i>2 T<sub>p</sub></i> clears contention stages rapidly, preventing queue backlog buildup.",
-        style_body
+        "<i>Why?</i> Truncating damaged frames in <i>2 T<sub>p</sub></i> clears contention stages rapidly, preventing queue backlog buildup.<br/>"
+        "• <b>Non-Persistent vs. p-Persistent Latency Dynamics:</b> Non-Persistent experiences severe delay escalation, reaching <b>3,637.4 slots at N=35</b> "
+        "(a 15&times; penalty over CSMA/CD) due to repeated 16-slot backoff timeouts and blind re-collision cascades. In contrast, p-Persistent with <i>p = 1/N</i> "
+        "bounds latency to <b>594.9 slots</b>, as geometric mini-slot deference resolves contention without accumulating massive collision backlogs.<br/>"
+        "• <b>Why 1-Persistent Peaked at N = 15 and Dropped (Survival Bias & Deadlock):</b> In Figure 20.1, 1-Persistent delay peaks at <b>65,874.7 slots at N = 15</b> "
+        "before appearing to decrease at N = 20 (13,915.5 slots) and flatlining for N &ge; 25. <i>Why is this normal and justifiable?</i> Latency is computed strictly over "
+        "<i>successfully delivered packets</i>. At N = 15, the channel is on the verge of total collapse: almost all packets collide, but a rare few survive after tens of thousands of retries, "
+        "producing an enormous measured delay peak. Beyond N &ge; 20, the channel enters <b>absolute herd deadlock</b> (100% collision rate, zero delivered packets). "
+        "With zero surviving samples, empirical measured delay drops to undefined / 0, though theoretical true latency is <i>infinite (&infin;)</i> due to complete service starvation.",
+        style_explain
     ))
     story.append(PageBreak())
 
